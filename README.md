@@ -3,7 +3,7 @@
 Toledo, Ohio area weather information that is pulled from National Weather Serivce XML files and HTML pages.
 
 Working example:  
-http://toledotalk.com/weather/test/wx.html
+http://toledotalk.com/weather/html/wx.html
 
 Mentioned here:  
 http://toledotalk.com/cgi-bin/tt.pl/Simple_weather_page
