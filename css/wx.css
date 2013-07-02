@@ -1,0 +1,35 @@
+.wx-alert {color: darkred;}
+.wx-alert a {color: darkred;}
+.wx-alert a:visited {color: darkred;}
+.wx-alert a:hover {color: darkred;}
+
+.wx-minor-text {color: gray; font-size: 90%;}
+
+img {
+    max-width: 100%;
+}
+
+#wx-content {
+   line-height: 1.6em;
+/*   font-size: 110%; */
+   font-size: 1.1em; 
+   color: #666;
+}
+
+#wx-content strong {
+    color: #000000;
+}
+
+@media only screen and (min-width: 769px) {
+  .ui-page {
+      width: 40em !important;
+      margin: 0 auto !important;
+      position: relative !important; 
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+    #wx-content {
+        color: #444444;
+    }
+}
