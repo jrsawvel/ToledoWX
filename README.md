@@ -21,7 +21,7 @@ Perl scripts execute in cron at regular intervals. The scripts parse multiple NW
 
 ### Required Modules
 
-The following pure Perl modules were downloaded and included within the this app's lib directory on the server.
+The following pure Perl modules were downloaded and included within this app's lib directory on the server.
 
 * HTML::Template
 * XML::TreePP
