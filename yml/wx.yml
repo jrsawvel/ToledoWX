@@ -1,16 +1,16 @@
 ---
-    home_page:                        http://toledotalk.com/weather/test/wx.html
-    outlook_home_page:                http://toledotalk.com/weather/test/convective-outlook.html
-    radar_home_page:                  http://toledotalk.com/weather/test/radar.html
-    errors_home_page:                 http://toledotalk.com/weather/test/errors.html
-    more_radars_maps_home_page:       http://toledotalk.com/weather/test/more-radars-and-maps.html
-    wxhome:                           http://toledotalk.com/weather/test
+    home_page:                        http://toledotalk.com/weather/html/wx.html
+    outlook_home_page:                http://toledotalk.com/weather/html/convective-outlook.html
+    radar_home_page:                  http://toledotalk.com/weather/html/radar.html
+    errors_home_page:                 http://toledotalk.com/weather/html/errors.html
+    more_radars_maps_home_page:       http://toledotalk.com/weather/html/more-radars-and-maps.html
+    wxhome:                           http://toledotalk.com/weather/html
     imagehome:                        http://toledotalk.com/weather/images
-    cssurl:                           http://www.toledotalk.com/weather/test/wx.css
+    cssurl:                           http://www.toledotalk.com/weather/html/wx.css
     imagedir:                         /home/toledotk/public_html/weather/images/
-    htmldir:                          /home/toledotk/public_html/weather/test/
-    errors_file:                      /home/toledotk/Weather/log/error.txt
-    template_home:                    /home/toledotk/Weather/tmpl
+    htmldir:                          /home/toledotk/public_html/weather/html/
+    errors_file:                      /home/toledotk/ToledoWX/log/error.txt
+    template_home:                    /home/toledotk/ToledoWX/tmpl
     site_name:                        Toledo Weather
     lucas_county_zone_xml:            http://forecast.weather.gov/MapClick.php?lat=41.61000&lon=-83.8&unit=0&lg=english&FcstType=dwml
     lucas_county_hourly_forecast_xml: http://forecast.weather.gov/MapClick.php?lat=41.59241&lon=-83.80838&FcstType=digitalDWML
