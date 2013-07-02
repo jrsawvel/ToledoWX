@@ -280,7 +280,7 @@ sub get_heat_index {
     my $feels=0;
     my $rounded=0;
 
-    if ( !$tempf or !$humid ) {
+    if ( !$tempf or !$humid or !is_numeric($tempf) or !is_numeric($humid) ) {
         return $rounded;
     }
 
@@ -345,6 +345,15 @@ sub wind_direction_degrees_to_cardinal {
 sub reformat_nws_date_time {
     my $nws_date_time_str = shift;
     
+    my %hash = ();
+
+    if ( !$nws_date_time_str ) {
+        $hash{date} = "-";
+        $hash{time} = "-";
+        $hash{period} = "-";
+        return %hash;
+    }
+
     my @months = qw(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec);
 
     my @values = split('T', $nws_date_time_str);
@@ -371,8 +380,6 @@ sub reformat_nws_date_time {
     # work on date
     my @yrmonday = split('-', $values[0]);
     my $date_str = sprintf("%s %d, %d", $months[$yrmonday[1]-1], $yrmonday[2], $yrmonday[0]);
-
-    my %hash = ();
 
     $hash{date} = $date_str;
     $hash{time} = $time_str;

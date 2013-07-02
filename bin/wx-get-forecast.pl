@@ -7,7 +7,7 @@ use strict;
 $|++;
 
 BEGIN {
-    unshift @INC, "/home/toledotk/Weather/lib";
+    unshift @INC, "/home/toledotk/ToledoWX/lib";
 }
 
 use Weather::Web;
