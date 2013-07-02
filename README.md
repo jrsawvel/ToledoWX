@@ -9,7 +9,7 @@ WX or "weather" in Morse code telegraph shorthand (per Wikipedia)
 
 Not to be confused with Perl's Wx library interface to the wxWidgets cross-platform GUI toolkit.
 
-This could be used for other areas of the country by point the to the appropriate XML and HTML files.
+This could be used for other areas of the country by pointing the to the appropriate XML and HTML files.
 
 
 
