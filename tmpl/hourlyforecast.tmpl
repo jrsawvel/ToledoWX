@@ -1,0 +1,20 @@
+<!-- tmpl_include name="header.tmpl" -->
+<strong>Toledo Hourly Forecast</strong>
+<!-- tmpl_loop name="express_loop" -->
+
+<p>
+<strong><!-- tmpl_var name="starttime" --></strong> - 
+<small><!-- tmpl_var name="startdate" --></small> 
+<br />
+<small>temp:</small> <!-- tmpl_var name="temperature" --> F
+<br />
+<small>wind:</small> <!-- tmpl_var name="winddirection" --> 
+ <!-- tmpl_var name="windspeed" --> mph
+<br />
+<small>precip chance</small> <!-- tmpl_var name="precipchance" --> % 
+<br />
+<small>cloud cover amount</small> <!-- tmpl_var name="cloudamount" --> % 
+</p>
+
+<!-- /tmpl_loop -->
+<!-- tmpl_include name="footer.tmpl" -->
