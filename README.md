@@ -1,11 +1,13 @@
 # ToledoWX (Weather)
 
-
 Toledo, Ohio area weather information that is pulled from National Weather Serivce XML files and HTML pages.
 
 WX or "weather" in Morse code telegraph shorthand (per Wikipedia)
 
 Not to be confused with Perl's Wx library interface to the wxWidgets cross-platform GUI toolkit.
+
+This could be used for other areas of the country by point the to the appropriate XML and HTML files.
+
 
 
 ## Perl
@@ -16,7 +18,7 @@ Perl scripts execute in cron at regular intervals. The scripts parse multiple NW
 
 ### Required Modules
 
-The following pure Perl modules were downloaded and included within the this app's lib directory.
+The following pure Perl modules were downloaded and included within the this app's lib directory on the server.
 
 * HTML::Template
 * XML::TreePP
@@ -48,4 +50,47 @@ May need to save a copy of the XML file that cannot be parsed to see what was ch
 Under the Web server's document home directory, I created an "images" directory to store downloaded NWS images to be displayed in the HTML files created by the Perl scripts.
  
 Again, because of the unresponsiveness of NWS websites at times, I felt it was better to store the images locally.
+
+
+## Directory Structures
+
+server-home/ToledoWX/  
+lib/Weather  
+lib/HTML  
+lib/XML  
+lib/YAML  
+css/  
+bin/  
+tmpl/  
+yml/  
+log/  
+ 
+ 
+document-home/weather/  
+images/  
+html/  
+ 
+ 
+## To-Do
+
+Download and parse XML files pertaining to the counties surrounding Lucas County (Toledo).
+
+If a warning is issued for a neighboring county, it will not appear on the home page of this app.
+
+If a watch is issued that inclues a neighboring county, but not Lucas County, then this information will also not appear on this app's home page.
+
+Three National Weather Service offices provide coverage for the Toledo area.
+
+* Cleveland NWS counties covered:
+  * Lucas (Toledo)
+  * Wood 
+  * Ottawa
+* Northern Indiana NWS counties covered:
+  * Fulton
+  * Henry
+* Detroit/Pontiac NWS counties covered
+  * Monroe
+  * Lenawee
+
+
 
