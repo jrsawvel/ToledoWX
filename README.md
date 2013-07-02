@@ -5,11 +5,15 @@ Toledo, Ohio area weather information that is pulled from National Weather Seriv
 Working example:  
 http://toledotalk.com/weather/test/wx.html
 
+Mentioned here:  
+http://toledotalk.com/cgi-bin/tt.pl/Simple_weather_page
+
+
 WX or "weather" in Morse code telegraph shorthand (per Wikipedia)
 
 Not to be confused with Perl's Wx library interface to the wxWidgets cross-platform GUI toolkit.
 
-This could be used for other areas of the country by point the to the appropriate XML and HTML files.
+This could be used for other areas of the country by pointing the to the appropriate XML and HTML files.
 
 
 
@@ -21,7 +25,7 @@ Perl scripts execute in cron at regular intervals. The scripts parse multiple NW
 
 ### Required Modules
 
-The following pure Perl modules were downloaded and included within the this app's lib directory on the server.
+The following pure Perl modules were downloaded and included within this app's lib directory on the server.
 
 * HTML::Template
 * XML::TreePP
