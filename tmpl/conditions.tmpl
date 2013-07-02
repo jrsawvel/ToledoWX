@@ -1,0 +1,94 @@
+<!-- tmpl_include name="header.tmpl" -->
+
+<div data-role="collapsible-set" data-inset="false">
+
+<div data-role="collapsible" data-collapsed="false">
+<h3>Toledo Express Airport (KTOL)</h3>
+<!-- <small>Current conditions at Express Airport</small><br /> -->
+
+<!-- tmpl_loop name="express_loop" -->
+<small><!-- tmpl_var name="updatedate" --></small><br />
+<!-- <small>Lat: 41.61 Lon: -83.8 Elev: 669ft.</small><br /> -->
+
+Weather : <!-- tmpl_var name="weather" --> <br />
+Temperature : <!-- tmpl_var name="temperature" --> F <br />
+Humidity : <!-- tmpl_var name="humidity" -->% <br />
+Wind Speed : <!-- tmpl_var name="winddirection" --> <!-- tmpl_var name="windspeedsustained" --> <!-- tmpl_var name="windspeedsustainedunits" --> 
+<!-- tmpl_if windspeedgust -->
+- Gust <!-- tmpl_var name="windspeedgust" --> <!-- tmpl_var name="windspeedgustunits" --> 
+<!-- /tmpl_if -->
+<br />
+Barometer : <!-- tmpl_var name="pressure" --> in <br />
+Dewpoint: <!-- tmpl_var name="dewpoint" --> F <br />
+Visibility : <!-- tmpl_var name="visibility" --> <!-- tmpl_var name="visibilityunits" --> <br />
+<!-- tmpl_if heatindex -->
+Heat Index : <!-- tmpl_var name="heatindex" --> F <br />
+<!-- /tmpl_if -->
+<!-- /tmpl_loop -->
+
+<p>External Link : <a href="http://w1.weather.gov/data/obhistory/KTOL.html" data-rel="external" target="_blank">3-day history</a></p>
+</div>
+
+
+
+
+<div data-role="collapsible">
+<h3>Toledo Executive Airport (KTDZ)</h3>
+<!-- <p><small>Current conditions at Executive Airport</small><br /> -->
+<small>(formerly Metcalf Airport)</small><br />
+
+<!-- tmpl_loop name="executive_loop" -->
+<small><!-- tmpl_var name="updatedate" --></small><br />
+<!-- <small>Lat: 41.56 Lon: -83.48 Elev: 620ft.</small></p> -->
+
+Weather : <!-- tmpl_var name="weather" --> <br />
+Temperature : <!-- tmpl_var name="temperature" --> F <br />
+Humidity : <!-- tmpl_var name="humidity" -->% <br />
+Wind Speed : <!-- tmpl_var name="winddirection" --> <!-- tmpl_var name="windspeedsustained" --> <!-- tmpl_var name="windspeedsustainedunits" --> 
+<!-- tmpl_if windspeedgust -->
+- Gust <!-- tmpl_var name="windspeedgust" --> <!-- tmpl_var name="windspeedgustunits" --> 
+<!-- /tmpl_if -->
+<br />
+Barometer : <!-- tmpl_var name="pressure" --> in <br />
+Dewpoint: <!-- tmpl_var name="dewpoint" --> F <br />
+Visibility : <!-- tmpl_var name="visibility" --> <!-- tmpl_var name="visibilityunits" --> <br />
+<!-- tmpl_if heatindex -->
+Heat Index : <!-- tmpl_var name="heatindex" --> F <br />
+<!-- /tmpl_if -->
+<!-- /tmpl_loop -->
+
+</div>
+
+
+
+
+<div data-role="collapsible">
+<h3>Toledo Suburban Airport (KDUH)</h3>
+<!-- <p><small>Current conditions at Suburban Airport</small><br /> -->
+<small>(near Lambertville)</small><br />
+
+<!-- tmpl_loop name="suburban_loop" -->
+<small><!-- tmpl_var name="updatedate" --></small><br />
+<!-- <small>Lat: 41.73 Lon: -83.65 Elev: 669ft.</small><br /> -->
+
+Weather : <!-- tmpl_var name="weather" --> <br />
+Temperature : <!-- tmpl_var name="temperature" --> F <br />
+Humidity : <!-- tmpl_var name="humidity" -->% <br />
+Wind Speed : <!-- tmpl_var name="winddirection" --> <!-- tmpl_var name="windspeedsustained" --> <!-- tmpl_var name="windspeedsustainedunits" --> 
+<!-- tmpl_if windspeedgust -->
+- Gust <!-- tmpl_var name="windspeedgust" --> <!-- tmpl_var name="windspeedgustunits" --> 
+<!-- /tmpl_if -->
+<br />
+Barometer : <!-- tmpl_var name="pressure" --> in <br />
+Dewpoint: <!-- tmpl_var name="dewpoint" --> F <br />
+Visibility : <!-- tmpl_var name="visibility" --> <!-- tmpl_var name="visibilityunits" --> <br />
+<!-- tmpl_if heatindex -->
+Heat Index : <!-- tmpl_var name="heatindex" --> F <br />
+<!-- /tmpl_if -->
+<!-- /tmpl_loop -->
+
+</div>
+
+</div>
+
+<!-- tmpl_include name="footer.tmpl" -->

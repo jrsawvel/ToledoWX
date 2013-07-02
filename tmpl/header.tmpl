@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+  <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+  <title><!-- tmpl_var name="pagetitle" --></title>
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+  <link rel="stylesheet" href="<!-- tmpl_var name="cssurl" -->" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+
+<div data-role="page" data-theme="d"> 
+
+<div data-role="header" data-theme="b" data-position="fixed">
+<h1><!-- tmpl_var name="site_name" --></h1>
+<!-- tmpl_if refresh_button -->
+  <a href="<!-- tmpl_var name="refresh_button_url" -->" data-icon="refresh" data-iconpos="notext"  onclick="location.reload(true)" class="ui-btn-right"  >Refresh</a>  
+<!-- tmpl_else -->
+<!-- tmpl_if back_and_home -->
+  <a href="<!-- tmpl_var name="back_button_url" -->" data-icon="arrow-l" data-iconpos="notext" data-direction="reverse">Back</a> 
+  <a href="<!-- tmpl_var name="home_page" -->" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a> 
+<!-- tmpl_else -->
+<!-- tmpl_if back_and_refresh -->
+  <a href="<!-- tmpl_var name="home_page" -->" data-icon="arrow-l" data-iconpos="notext" data-direction="reverse">Back</a> 
+  <a href="<!-- tmpl_var name="refresh_button_url" -->" data-icon="refresh" data-iconpos="notext" onclick="location.reload(true)" >Refresh</a> 
+<!-- tmpl_else -->
+  <a href="<!-- tmpl_var name="home_page" -->" data-icon="arrow-l" data-iconpos="notext"  data-direction="reverse">Back</a> 
+<!-- /tmpl_if -->
+<!-- /tmpl_if -->
+<!-- /tmpl_if -->
+</div>
+  
+<div data-role="content">
+
+<div id="wx-content"> 
+
+

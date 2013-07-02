@@ -1,0 +1,7 @@
+<!-- tmpl_include name="header.tmpl" -->
+<strong>Toledo 7-day forecast</strong>
+<p>Last Update: <!-- tmpl_var name="lastupdate" --></p>
+<!-- tmpl_loop name="forecast_loop" -->
+<p><strong><!-- tmpl_var name="period" -->:</strong> <!-- tmpl_var name="forecast" --></p>
+<!-- /tmpl_loop -->
+<!-- tmpl_include name="footer.tmpl" -->
