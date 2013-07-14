@@ -15,6 +15,8 @@ Not to be confused with Perl's Wx library interface to the wxWidgets cross-platf
 
 This could be used for other areas of the country by pointing the to the appropriate XML and HTML files.
 
+**Update 14Jul2013 :** - Added new scripts and templates to support processing data from http://forecast.io which provides an easy API to access their JSON data. This required installing the JSON Perl module located at http://search.cpan.org/~makamaka/JSON-PP-2.27202/lib/JSON/PP.pm and also using my new ForecastIO Perl module located https://github.com/jrsawvel/Perl-ForecastIO . The ForecastIO module uses my DateTimeFormatter module located at https://github.com/jrsawvel/DateTimeFormatter .
+
 
 
 ## Perl
