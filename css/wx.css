@@ -1,7 +1,14 @@
+
+
 .wx-alert {color: darkred;}
 .wx-alert a {color: darkred;}
 .wx-alert a:visited {color: darkred;}
 .wx-alert a:hover {color: darkred;}
+
+.wx-forecastio {color: darkgreen;}
+.wx-forecastio a {color: darkgreen;}
+.wx-forecastio a:visited {color: darkgreen;}
+.wx-forecastio a:hover {color: darkgreen;}
 
 .wx-minor-text {color: gray; font-size: 90%;}
 
