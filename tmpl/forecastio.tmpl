@@ -1,0 +1,39 @@
+<!-- tmpl_include name="header.tmpl" -->
+<strong>Toledo Forecast <small>(using <a href="http://forecast.io">forecast.io</a> data)</small></strong>
+<p>
+<strong>Currently:</strong> <!-- tmpl_var name="currently_summary" --> <!-- tmpl_var name="currently_temperature" --> F
+ -  <!-- tmpl_var name="currently_winddirection" --> at <!-- tmpl_var name="currently_windspeed" --> mph
+</p>
+<p>
+<strong>Next Hour:</strong> <!-- tmpl_var name="minutely_summary" -->
+</p>
+<p>
+<strong>Next 24 Hours:</strong> <!-- tmpl_var name="hourly_summary" -->
+</p>
+<p>
+<strong>Next 7 Days:</strong> <!-- tmpl_var name="daily_summary" -->
+</p>
+
+<div style="font-size:90%; font-weight:bold;">
+<!-- tmpl_loop name="minutely_loop" -->
+<strong><!-- tmpl_var name="time" --></strong>
+<!-- <small> - <!-- tmpl_var name="date" --></small> -->
+
+<span style="color: <!-- tmpl_var name="precipcolor" -->">
+<!-- tmpl_if precipProbability -->
+ <!-- tmpl_var name="precipProbability" --> % chance of 
+ <!-- tmpl_var name="precipIntensity" --> 
+ <!-- tmpl_var name="precipType" --> 
+</span>
+ 
+<!-- tmpl_else -->
+<span style="color: #888888;">
+ <!-- tmpl_var name="precipProbability" --> % chance of precip
+</span>
+<!-- /tmpl_if -->
+<br />
+<!-- /tmpl_loop -->
+</div>
+
+
+<!-- tmpl_include name="footer.tmpl" -->
