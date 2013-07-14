@@ -12,6 +12,7 @@
     errors_file:                      /home/toledotk/ToledoWX/log/error.txt
     template_home:                    /home/toledotk/ToledoWX/tmpl
     site_name:                        Toledo Weather
+# tol sub    lucas_county_zone_xml:            http://forecast.weather.gov/MapClick.php?lat=41.66394&lon=-83.55521199999998&unit=0&lg=english&FcstType=dwml
     lucas_county_zone_xml:            http://forecast.weather.gov/MapClick.php?lat=41.61000&lon=-83.8&unit=0&lg=english&FcstType=dwml
     lucas_county_hourly_forecast_xml: http://forecast.weather.gov/MapClick.php?lat=41.59241&lon=-83.80838&FcstType=digitalDWML
     toledo_suburban_ap:               http://forecast.weather.gov/MapClick.php?lat=41.66394&lon=-83.55521199999998&unit=0&lg=english&FcstType=dwml
@@ -42,4 +43,8 @@
     wx_links_output_file:             external-links.html
     wx_index_output_file:             wx.html
     wx_hourly_forecast_output_file:   hourly-forecast.html
+    wx_forecastio_output_file:        forecastio.html
     spcmesoscalegifhome:              http://www.spc.noaa.gov/products/md
+    forecastio_api_key:               cd50a948f24600c7cc2986548ee741f1
+    forecastio_latitude:              41.665556
+    forecastio_longitude:             -83.575278
