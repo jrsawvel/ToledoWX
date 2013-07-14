@@ -200,14 +200,31 @@ close FILE;
 
 sub get_mesoscale_info {
 
-    my @array;
-    my $wxhome = Config::get_value_for("wxhome");
+    my @array = ();
     
     # reference to an array of hasshes
     my $mdtree = read_and_parse_xml_file("spc_md_xml");
+
     my $mdarrref = $mdtree->{'rss'}->{'channel'}->{'item'};
     if ( ref $mdarrref eq ref [] ) {
         foreach my $mditem ( @$mdarrref ) {
+            my %hash = process_md_hash_ref($mditem);
+            push(@array, \%hash) if %hash;
+        }
+    }  else {
+            my %hash = process_md_hash_ref($mdarrref);
+            push(@array, \%hash) if %hash;
+    }
+
+    return @array;
+}
+
+
+sub process_md_hash_ref {
+    my $mditem = shift;
+
+    my $wxhome = Config::get_value_for("wxhome");
+ 
             my %hash = ();
             my %mdhash = ();
             my $content;
@@ -255,15 +272,11 @@ sub get_mesoscale_info {
                 $hash{wxhome} = $wxhome;
 
                 create_mesoscale_file(\%mdhash); 
-
-                push(@array, \%hash);
-
             } 
-        }
-    }
 
-    return @array;
+    return %hash;
 }
+
 
 sub create_mesoscale_file {
     my $hash_ref = shift;
