@@ -364,6 +364,13 @@ sub reformat_nws_date_time {
     my $hr = $time[0];
     my $min = $time[1];
 
+    if ( !is_numeric($hr) ) {
+        $hash{date} = "-";
+        $hash{time} = "-";
+        $hash{period} = "-";
+        return %hash;
+    }
+
     my $prd = "am";
     if ( $hr >= 12 ) {
         $prd = "pm";
