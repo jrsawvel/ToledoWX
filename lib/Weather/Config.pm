@@ -3,7 +3,7 @@ use strict;
 
 use YAML::Tiny;
 
-my $yml_file = "/home/toledotk/Weather/yml/wx.yml";
+my $yml_file = "/home/toledotk/ToledoWX/yml/wx.yml";
 
 my $yaml = YAML::Tiny->new;
 

@@ -7,7 +7,7 @@ use strict;
 $|++;
 
 BEGIN {
-    unshift @INC, "/home/toledotk/Weather/lib";
+    unshift @INC, "/home/toledotk/ToledoWX/lib";
 }
 
 use Weather::Web;
@@ -159,6 +159,7 @@ foreach my $key ( keys %alerts )
 
     $button_hash{url} = $filename;
     $button_hash{alert_time} = $alert_time;
+    $button_hash{wxhome} = Config::get_value_for("wxhome");
     push(@alert_button_loop, \%button_hash);
     $alert_buttons_exist = 1;
 }
@@ -186,6 +187,8 @@ Web::set_template_variable("discussion_time", $discussion_time);
 
 Web::set_template_variable("marine_time", $marine_time);
 
+Web::set_template_variable("wxhome",    Config::get_value_for("wxhome"));
+
 Web::set_template_loop_data("mesoscale" , \@meso_loop) if @meso_loop;
 
 my $html_output = Web::display_page("Toledo Weather", "returnoutput");
@@ -197,13 +200,31 @@ close FILE;
 
 sub get_mesoscale_info {
 
-    my @array;
+    my @array = ();
     
     # reference to an array of hasshes
     my $mdtree = read_and_parse_xml_file("spc_md_xml");
+
     my $mdarrref = $mdtree->{'rss'}->{'channel'}->{'item'};
     if ( ref $mdarrref eq ref [] ) {
         foreach my $mditem ( @$mdarrref ) {
+            my %hash = process_md_hash_ref($mditem);
+            push(@array, \%hash) if %hash;
+        }
+    }  else {
+            my %hash = process_md_hash_ref($mdarrref);
+            push(@array, \%hash) if %hash;
+    }
+
+    return @array;
+}
+
+
+sub process_md_hash_ref {
+    my $mditem = shift;
+
+    my $wxhome = Config::get_value_for("wxhome");
+ 
             my %hash = ();
             my %mdhash = ();
             my $content;
@@ -248,16 +269,14 @@ sub get_mesoscale_info {
                 $hash{mdnum} = $mdnum;
                 $hash{mdtime} = $mdtime;
 
+                $hash{wxhome} = $wxhome;
+
                 create_mesoscale_file(\%mdhash); 
-
-                push(@array, \%hash);
-
             } 
-        }
-    }
 
-    return @array;
+    return %hash;
 }
+
 
 sub create_mesoscale_file {
     my $hash_ref = shift;

@@ -5,24 +5,25 @@
  <!--       <li data-icon="alert"><a href="mesoscale-discussion.html"><span class="wx-alert">Mesoscale Discussion</span> <span class="wx-minor-text">1:30pm</span></a></li> -->
 
     <!-- tmpl_loop mesoscale_loop --> 
-      <li data-icon="alert"><a href="mesoscale<!-- tmpl_var name="mdnum" -->.html"><span class="wx-alert">Mesoscale Discussion</span> <span class="wx-minor-text"> #<!-- tmpl_var name="mdnum" --> <!-- tmpl_var name="mdtime" --></span></a></li> 
+      <li data-icon="alert"><a href="<!-- tmpl_var name="wxhome" -->/mesoscale<!-- tmpl_var name="mdnum" -->.html"><span class="wx-alert">Mesoscale Discussion</span> <span class="wx-minor-text"> #<!-- tmpl_var name="mdnum" --> <!-- tmpl_var name="mdtime" --></span></a></li> 
     <!-- /tmpl_loop -->
     <!-- tmpl_loop buttonalerts_loop -->
-      <li data-icon="alert"><a href="<!-- tmpl_var name="url" -->"><span class="wx-alert"><!-- tmpl_var name="alert" --></span> <span class="wx-minor-text"><!-- tmpl_var name="alert_time" --></span></a></li> 
+      <li data-icon="alert"><a href="<!-- tmpl_var name="wxhome" -->/<!-- tmpl_var name="url" -->"><span class="wx-alert"><!-- tmpl_var name="alert" --></span> <span class="wx-minor-text"><!-- tmpl_var name="alert_time" --></span></a></li> 
     <!-- /tmpl_loop -->
-      <li><a href="current-conditions.html"><!-- tmpl_var name="conditions_weather" -->: <!-- tmpl_var name="conditions_temperature" --> <span class="wx-minor-text"><!-- tmpl_var name="conditions_time" --></span></a></li>
-      <li><a href="radar.html">Radar</a></li>
-      <li><a href="forecast.html">7-day Forecast <span class="wx-minor-text"><!-- tmpl_var name="forecast_time" --></span></a></li>
-      <li><a href="hourly-forecast.html">Hourly Forecast</a></li>
-      <li><a href="forecast-discussion.html">Forecast Discussion <span class="wx-minor-text"><!-- tmpl_var name="discussion_time" --></span></a></li>
-      <li><a href="convective-outlook.html">Convective Outlook</a></li>
-      <li><a href="more-radars-and-maps.html">More Radars & Maps</a></li>
-      <li><a href="lake-forecast.html">Lake Forecast <span class="wx-minor-text"><!-- tmpl_var name="marine_time" --></span></a></li>
+      <li><a href="<!-- tmpl_var name="wxhome" -->/current-conditions.html"><!-- tmpl_var name="conditions_weather" -->: <!-- tmpl_var name="conditions_temperature" --> <span class="wx-minor-text"><!-- tmpl_var name="conditions_time" --></span></a></li>
+      <li><a href="<!-- tmpl_var name="wxhome" -->/radar.html">Radar</a></li>
+      <li><a href="<!-- tmpl_var name="wxhome" -->/forecast.html">7-day Forecast <span class="wx-minor-text"><!-- tmpl_var name="forecast_time" --></span></a></li>
+      <li><a href="<!-- tmpl_var name="wxhome" -->/hourly-forecast.html">Hourly Forecast</a></li>
+      <li><a href="<!-- tmpl_var name="wxhome" -->/forecastio.html"><span class="wx-forecastio">forecast.io Info (testing)</span></a></li>
+      <li><a href="<!-- tmpl_var name="wxhome" -->/forecast-discussion.html">Forecast Discussion <span class="wx-minor-text"><!-- tmpl_var name="discussion_time" --></span></a></li>
+      <li><a href="<!-- tmpl_var name="wxhome" -->/convective-outlook.html">Convective Outlook</a></li>
+      <li><a href="<!-- tmpl_var name="wxhome" -->/more-radars-and-maps.html">More Radars & Maps</a></li>
+      <li><a href="<!-- tmpl_var name="wxhome" -->/lake-forecast.html">Lake Forecast <span class="wx-minor-text"><!-- tmpl_var name="marine_time" --></span></a></li>
     <!-- tmpl_unless hazardous_outlook_exists --> 
-      <li><a href="hazardous-weather-outlook.html"><span>No Hazardous Weather</span> <span class="wx-minor-text"><!-- tmpl_var name="hazardous_outlook_time" --></span></a></li> 
+      <li><a href="<!-- tmpl_var name="wxhome" -->/hazardous-weather-outlook.html"><span>No Hazardous Weather</span> <span class="wx-minor-text"><!-- tmpl_var name="hazardous_outlook_time" --></span></a></li> 
     <!-- /tmpl_unless -->
-      <li><a href="external-links.html">External Links</a></li>
-      <li><a href="errors.html"><span class="wx-minor-text">error log</span></a></li>
+      <li><a href="<!-- tmpl_var name="wxhome" -->/external-links.html">External Links</a></li>
+      <li><a href="<!-- tmpl_var name="wxhome" -->/errors.html"><span class="wx-minor-text">error log</span></a></li>
     </ul>
 
 <!-- tmpl_include name="footer.tmpl" -->

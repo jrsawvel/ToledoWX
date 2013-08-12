@@ -7,7 +7,7 @@ use strict;
 $|++;
 
 BEGIN {
-    unshift @INC, "/home/toledotk/Weather/lib";
+    unshift @INC, "/home/toledotk/ToledoWX/lib";
 }
 
 use Weather::Web;
@@ -99,7 +99,9 @@ unless ($result) {
         $hash{winddirection} = Utils::wind_direction_degrees_to_cardinal($hash{winddirection});
     } 
 
-    if ( $hash{windspeedsustained} == 0 ) {
+# test $hash{windspeedsustained} = "NA";
+
+    if ( !Utils::is_numeric($hash{windspeedsustained}) or $hash{windspeedsustained} == 0 ) {
         $hash{winddirection} = "Calm";
         $hash{windspeedsustained} = "";
         $hash{windspeedsustainedunits} = "";
