@@ -11,4 +11,5 @@
 ./wx-create-external-links-page.pl    2>> ../log/error.txt
 ./wx-get-spc-images.pl                2>> ../log/error.txt
 ./wx-create-index-page.pl             2>> ../log/error.txt
+./wx-get-forecastio-info.pl           2>> ../log/error.txt
 ./wx-create-error-page.pl 

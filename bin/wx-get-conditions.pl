@@ -52,7 +52,12 @@ sub read_xml {
     $ua->timeout(30); 
     my $response = $ua->get($xml_url);
     if ( $response->is_error ) {
-       die "$dt : could not retrieve $xml_url. " . $response->status_line; 
+        warn "$dt : warning : first attempt : could not retrieve $xml_url. " . $response->status_line . "\n"; 
+        $ua->timeout(30); 
+        $response = $ua->get($xml_url);
+        if ( $response->is_error ) {
+           die "$dt : program die : second and final attempt : could not retrieve $xml_url. " . $response->status_line; 
+        }
     }
 
     my $tree = "";
