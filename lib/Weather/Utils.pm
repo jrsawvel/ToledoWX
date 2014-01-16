@@ -263,6 +263,25 @@ sub get_http_referer {
     return $hr;
 }
 
+# http://usatoday30.usatoday.com/weather/winter/windchill/wind-chill-formulas.htm
+# http://en.wikipedia.org/wiki/Wind_chill
+# http://search.cpan.org/~jtrammell/Temperature-Windchill-0.04/lib/Temperature/Windchill.pm
+# https://github.com/trammell/temperature-windchill
+sub get_wind_chill {
+    my $tempf   = shift; # Fahrenheit
+    my $windmph = shift; # miles per hour
+
+    if ( $tempf > 50 or $windmph < 3 ) {
+        return 999;
+    }
+    
+    # 2001 formula : Wind chill temperature = 35.74 + 0.6215T - 35.75V (**0.16) + 0.4275TV(**0.16)
+    # V = wind in mph and T = air temp in F degrees
+     my $pow = $windmph ** 0.16;
+    my $wc = 35.74 + (0.6215 * $tempf) - (35.75 * $pow) + (0.4275 * $tempf * $pow);
+    my $rounded = int($wc + $wc/abs($wc*2));
+    return $rounded;
+}
 
 # http://en.wikipedia.org/wiki/Heat_index#Table_of_Heat_Index_values
 # https://code.google.com/p/yweather/issues/detail?id=20

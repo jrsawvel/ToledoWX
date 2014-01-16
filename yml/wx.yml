@@ -1,6 +1,7 @@
 ---
     home_page:                        http://toledotalk.com/weather/html/wx.html
     outlook_home_page:                http://toledotalk.com/weather/html/convective-outlook.html
+    afds_home_page:                   http://toledotalk.com/weather/html/area-forecast-discussions.html
     radar_home_page:                  http://toledotalk.com/weather/html/radar.html
     errors_home_page:                 http://toledotalk.com/weather/html/errors.html
     more_radars_maps_home_page:       http://toledotalk.com/weather/html/more-radars-and-maps.html
@@ -17,9 +18,12 @@
     lucas_county_hourly_forecast_xml: http://forecast.weather.gov/MapClick.php?lat=41.59241&lon=-83.80838&FcstType=digitalDWML
     toledo_suburban_ap:               http://forecast.weather.gov/MapClick.php?lat=41.66394&lon=-83.55521199999998&unit=0&lg=english&FcstType=dwml
     toledo_executive_ap:              http://forecast.weather.gov/MapClick.php?lat=41.55700&lon=-83.62715700000001&unit=0&lg=english&FcstType=dwml
-    marine_forecast:                  http://weather.noaa.gov/pub/data/forecasts/marine/near_shore/le/lez145.txt
+#    marine_forecast:                  http://weather.noaa.gov/pub/data/forecasts/marine/near_shore/le/lez145.txt
+    marine_forecast:                  http://weather.noaa.gov/pub/data/raw/fz/fzus51.kcle.nsh.cle.txt
     hazardous_outlook:                http://weather.noaa.gov/pub/data/raw/fl/flus41.kcle.hwo.cle.txt
     forecast_discussion:              http://weather.noaa.gov/pub/data/raw/fx/fxus61.kcle.afd.cle.txt
+    det_forecast_discussion:          http://weather.noaa.gov/pub/data/raw/fx/fxus63.kdtx.afd.dtx.txt
+    nind_forecast_discussion:         http://weather.noaa.gov/pub/data/raw/fx/fxus63.kiwx.afd.iwx.txt
     spcoutlookgifhome:                http://www.spc.noaa.gov/products/outlook
     day1outlookgif:                   http://www.spc.noaa.gov/products/outlook/day1otlk_2000.gif
     day2outlookgif:                   http://www.spc.noaa.gov/products/outlook/day2otlk_1730.gif
@@ -37,6 +41,9 @@
     wx_forecast_output_file:          forecast.html
     wx_outlook_home_output_file:      convective-outlook.html
     wx_discussion_output_file:        forecast-discussion.html
+    wx_afds_output_file:              area-forecast-discussions.html
+    wx_det_discussion_output_file:    det-forecast-discussion.html
+    wx_nind_discussion_output_file:   nind-forecast-discussion.html
     wx_marine_output_file:            lake-forecast.html
     wx_radar_output_file:             radar.html
     wx_more_radars_maps_output_file:  more-radars-and-maps.html
@@ -45,7 +52,7 @@
     wx_hourly_forecast_output_file:   hourly-forecast.html
     wx_forecastio_output_file:        forecastio.html
     spcmesoscalegifhome:              http://www.spc.noaa.gov/products/md
-    forecastio_api_key:               api-key
+    forecastio_api_key:               cd50a948f24600c7cc2986548ee741f1
     forecastio_latitude:              41.665556
     forecastio_longitude:             -83.575278
     sylvania_forecastio_latitude:     41.711389

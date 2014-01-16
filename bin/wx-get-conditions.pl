@@ -22,7 +22,9 @@ if ( $filename =~  m/^([a-zA-Z0-9\/\.\-_]+)$/ ) {
     die "$dt : Bad data in first argument";	
 }
 
-my $xml_url = Config::get_value_for("lucas_county_zone_xml");
+my $xml_url;
+
+$xml_url = Config::get_value_for("lucas_county_zone_xml");
 my @express_loop = read_xml($xml_url);
 
 $xml_url = Config::get_value_for("toledo_executive_ap");
@@ -32,9 +34,9 @@ $xml_url = Config::get_value_for("toledo_suburban_ap");
 my @suburban_loop = read_xml($xml_url);
 
 Web::set_template_name("conditions");
-Web::set_template_loop_data("express", \@express_loop);
-Web::set_template_loop_data("executive", \@executive_loop);
-Web::set_template_loop_data("suburban" , \@suburban_loop);
+Web::set_template_loop_data("express",   \@express_loop)   if $express_loop[0]->{error}   ne "yes" ;
+Web::set_template_loop_data("executive", \@executive_loop) if $executive_loop[0]->{error} ne "yes" ;
+Web::set_template_loop_data("suburban" , \@suburban_loop)  if $suburban_loop[0]->{error}  ne "yes" ;
 my $html_output = Web::display_page("Conditions", "returnoutput");
 open FILE, ">$filename" or die "$dt : could not create file $filename";
 print FILE $html_output;
@@ -95,10 +97,14 @@ $result = eval {
     $hash{dewpoint} = $tree->{'dwml'}->{'data'}->[1]->{'parameters'}->{'temperature'}->[1]->{'value'};
 };
 unless ($result) {
-    die "$dt : problem retrieving xml values from $xml_url."; 
+#    die "$dt : problem retrieving xml values from $xml_url."; 
+    $hash{error} = "yes";
+    push(@loop, \%hash);
+    return @loop;
 }
 
     $hash{heatindex} = Utils::get_heat_index($hash{temperature}, $hash{humidity});
+
 
     if ( Utils::is_numeric($hash{winddirection}) ) {
         $hash{winddirection} = Utils::wind_direction_degrees_to_cardinal($hash{winddirection});
@@ -113,6 +119,10 @@ unless ($result) {
     } elsif ( Utils::is_numeric($hash{windspeedsustained}) and $hash{windspeedsustainedunits} eq "knots" ) {
         $hash{windspeedsustained} = Utils::knots_to_mph($hash{windspeedsustained});
         $hash{windspeedsustainedunits} = "mph";
+        $hash{windchill} = Utils::get_wind_chill($hash{temperature}, $hash{windspeedsustained});
+        if ( $hash{windchill} != 999 ) {
+            $hash{windchillexists} = 1;
+        }
     } 
 
     if ( Utils::is_numeric($hash{windspeedgust}) and $hash{windspeedgustunits} eq "knots" ) {

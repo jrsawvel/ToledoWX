@@ -10,6 +10,10 @@
 <br />
 <small>wind:</small> <!-- tmpl_var name="winddirection" --> 
  <!-- tmpl_var name="windspeed" --> mph
+<!-- tmpl_if windchillexists -->
+<br />
+<small>wind chill:</small> <!-- tmpl_var name="windchill" --> F
+<!-- /tmpl_if -->
 <br />
 <small>precip chance</small> <!-- tmpl_var name="precipchance" --> % 
 <br />

@@ -82,6 +82,7 @@ sub read_xml {
 $result = eval {
     $hash{starttime}     = $tree->{'dwml'}->{'data'}->{'time-layout'}->{'start-valid-time'};
     $hash{temperature}   = $tree->{'dwml'}->{'data'}->{'parameters'}->{'temperature'}->[0]->{'value'};
+    $hash{windchill}     = $tree->{'dwml'}->{'data'}->{'parameters'}->{'temperature'}->[2]->{'value'};
     $hash{winddirection} = $tree->{'dwml'}->{'data'}->{'parameters'}->{'direction'}->{'value'};
     $hash{windspeed}     = $tree->{'dwml'}->{'data'}->{'parameters'}->{'wind-speed'}->[0]->{'value'};
     $hash{precipchance}  = $tree->{'dwml'}->{'data'}->{'parameters'}->{'probability-of-precipitation'}->{'value'};
@@ -114,6 +115,12 @@ sub merge_data {
         my %tmp_hash = Utils::reformat_nws_date_time($hash_ref->{starttime}->[$i]);
         $hash{starttime} = "$tmp_hash{time} $tmp_hash{period}";
         $hash{startdate} = $tmp_hash{date};
+
+        $hash{windchillexists} = 0;
+        if ( exists($hash_ref->{windchill}->[$i]) ) {
+            $hash{windchill} = $hash_ref->{windchill}->[$i];
+            $hash{windchillexists} = 1;
+        }
 
         push(@loop, \%hash);
     }

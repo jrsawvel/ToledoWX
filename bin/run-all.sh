@@ -2,7 +2,7 @@
 ./wx-get-hourly-forecast.pl           2>> ../log/error.txt
 ./wx-get-conditions.pl                2>> ../log/error.txt
 ./wx-get-marine-forecast.pl           2>> ../log/error.txt
-./wx-get-discussion.pl                2>> ../log/error.txt
+./wx-get-afds.pl                      2>> ../log/error.txt
 ./wx-get-hazardous.pl                 2>> ../log/error.txt
 ./wx-get-outlook-gifs.pl              2>> ../log/error.txt
 ./wx-get-outlook-html.pl              2>> ../log/error.txt
@@ -12,4 +12,7 @@
 ./wx-get-spc-images.pl                2>> ../log/error.txt
 ./wx-create-index-page.pl             2>> ../log/error.txt
 ./wx-get-forecastio-info.pl           2>> ../log/error.txt
+./wx-get-discussion.pl                2>> ../log/error.txt
+./wx-get-det-discussion.pl            2>> ../log/error.txt
+./wx-get-nind-discussion.pl           2>> ../log/error.txt
 ./wx-create-error-page.pl 

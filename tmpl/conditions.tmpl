@@ -24,6 +24,9 @@ Visibility : <!-- tmpl_var name="visibility" --> <!-- tmpl_var name="visibilityu
 <!-- tmpl_if heatindex -->
 Heat Index : <!-- tmpl_var name="heatindex" --> F <br />
 <!-- /tmpl_if -->
+<!-- tmpl_if windchillexists -->
+Wind Chill : <!-- tmpl_var name="windchill" --> F <br />
+<!-- /tmpl_if -->
 <!-- /tmpl_loop -->
 
 <p>External Link : <a href="http://w1.weather.gov/data/obhistory/KTOL.html" data-rel="external" target="_blank">3-day history</a></p>
@@ -55,6 +58,9 @@ Visibility : <!-- tmpl_var name="visibility" --> <!-- tmpl_var name="visibilityu
 <!-- tmpl_if heatindex -->
 Heat Index : <!-- tmpl_var name="heatindex" --> F <br />
 <!-- /tmpl_if -->
+<!-- tmpl_if windchillexists -->
+Wind Chill : <!-- tmpl_var name="windchill" --> F <br />
+<!-- /tmpl_if -->
 <!-- /tmpl_loop -->
 
 </div>
@@ -84,6 +90,9 @@ Dewpoint: <!-- tmpl_var name="dewpoint" --> F <br />
 Visibility : <!-- tmpl_var name="visibility" --> <!-- tmpl_var name="visibilityunits" --> <br />
 <!-- tmpl_if heatindex -->
 Heat Index : <!-- tmpl_var name="heatindex" --> F <br />
+<!-- /tmpl_if -->
+<!-- tmpl_if windchillexists -->
+Wind Chill : <!-- tmpl_var name="windchill" --> F <br />
 <!-- /tmpl_if -->
 <!-- /tmpl_loop -->
 

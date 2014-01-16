@@ -1,6 +1,6 @@
 #!/usr/bin/perl -wT
 
-# wx-get-discussion.pl - area forecast discussion
+# wx-get-discussion.pl - northern indiana area forecast discussion
 
 use strict;
 
@@ -13,13 +13,13 @@ BEGIN {
 use Weather::Web;
     
 my $dt = Utils::get_formatted_date_time(); # returns format: 24-June-2013 12:23 p.m. EDT
-my $filename =  Config::get_value_for("htmldir") . Config::get_value_for("wx_discussion_output_file");
+my $filename =  Config::get_value_for("htmldir") . Config::get_value_for("wx_nind_discussion_output_file");
 if ( $filename =~  m/^([a-zA-Z0-9\/\.\-_]+)$/ ) {
     $filename = $1;
 } else {
     die "$dt : Bad filename $filename."; 
 }
-my $url = Config::get_value_for("forecast_discussion");
+my $url = Config::get_value_for("nind_forecast_discussion");
 
 my $ua = LWP::UserAgent->new;
 $ua->timeout(30); # default is 180 secs or 3 mins
@@ -37,7 +37,7 @@ Web::set_template_name("discussion");
 Web::set_template_variable("forecast_discussion", $content);
 Web::set_template_variable("back_and_home", 1);
 Web::set_template_variable("back_button_url", Config::get_value_for("afds_home_page")); 
-my $html_output = Web::display_page("Area Forecast Discussion", "returnoutput");
+my $html_output = Web::display_page("Northern Indiana Area Forecast Discussion", "returnoutput");
 
 open FILE, ">$filename" or die "$dt : could not create file $filename";
 print FILE $html_output;
