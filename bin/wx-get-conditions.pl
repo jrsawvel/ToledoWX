@@ -34,9 +34,22 @@ $xml_url = Config::get_value_for("toledo_suburban_ap");
 my @suburban_loop = read_xml($xml_url);
 
 Web::set_template_name("conditions");
-Web::set_template_loop_data("express",   \@express_loop)   if $express_loop[0]->{error}   ne "yes" ;
-Web::set_template_loop_data("executive", \@executive_loop) if $executive_loop[0]->{error} ne "yes" ;
-Web::set_template_loop_data("suburban" , \@suburban_loop)  if $suburban_loop[0]->{error}  ne "yes" ;
+
+if ( $express_loop[0]->{error}  ne "yes" ) {
+    delete($express_loop[0]->{error}); 
+    Web::set_template_loop_data("express",   \@express_loop)   
+}
+
+if ( $executive_loop[0]->{error} ne "yes" ) {
+    delete($executive_loop[0]->{error}); 
+    Web::set_template_loop_data("executive", \@executive_loop) 
+}
+
+if ( $suburban_loop[0]->{error}  ne "yes" ) {
+    delete($suburban_loop[0]->{error}); 
+    Web::set_template_loop_data("suburban" , \@suburban_loop)  
+}
+
 my $html_output = Web::display_page("Conditions", "returnoutput");
 open FILE, ">$filename" or die "$dt : could not create file $filename";
 print FILE $html_output;
@@ -95,6 +108,7 @@ $result = eval {
     $hash{humidity} = $tree->{'dwml'}->{'data'}->[1]->{'parameters'}->{'humidity'}->{'value'};
     $hash{temperature} = $tree->{'dwml'}->{'data'}->[1]->{'parameters'}->{'temperature'}->[0]->{'value'};
     $hash{dewpoint} = $tree->{'dwml'}->{'data'}->[1]->{'parameters'}->{'temperature'}->[1]->{'value'};
+    $hash{error} = "no";
 };
 unless ($result) {
 #    die "$dt : problem retrieving xml values from $xml_url."; 
