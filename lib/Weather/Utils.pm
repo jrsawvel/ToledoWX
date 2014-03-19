@@ -178,6 +178,10 @@ sub is_numeric {
     my $str = shift;
     my $rc = 0;
 
+    if ( !defined($str) or !$str ) {
+        return 0;
+    }
+  
     if ( $str =~ m|^[0-9]+$| ) {
         $rc = 1;
     }
