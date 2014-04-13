@@ -7,6 +7,7 @@
 ./wx-get-nind-discussion.pl           2>> ../log/error.txt
 ./wx-get-afds.pl                      2>> ../log/error.txt
 ./wx-get-hazardous.pl                 2>> ../log/error.txt
+./wx-get-outlook-day-4-8.pl           2>> ../log/error.txt
 ./wx-get-outlook-gifs.pl              2>> ../log/error.txt
 ./wx-get-outlook-html.pl              2>> ../log/error.txt
 ./wx-create-radar-page.pl             2>> ../log/error.txt

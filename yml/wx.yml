@@ -28,9 +28,11 @@
     day1outlookgif:                   http://www.spc.noaa.gov/products/outlook/day1otlk_2000.gif
     day2outlookgif:                   http://www.spc.noaa.gov/products/outlook/day2otlk_1730.gif
     day3outlookgif:                   http://www.spc.noaa.gov/products/outlook/day3otlk_0730.gif
+    day48outlookgif:                  http://www.spc.noaa.gov/products/exper/day4-8/day48prob.gif
     day1outlookhtml:                  http://www.spc.noaa.gov/products/outlook/day1otlk.html
     day2outlookhtml:                  http://www.spc.noaa.gov/products/outlook/day2otlk.html
     day3outlookhtml:                  http://www.spc.noaa.gov/products/outlook/day3otlk.html
+    day48outlookhtml:                 http://www.spc.noaa.gov/products/exper/day4-8/index.html 
     spc_md_image_url:                 http://www.spc.noaa.gov/products/md/validmd.png
     spc_watch_box_image_url:          http://www.spc.noaa.gov/products/watch/validww.png
     spc_outlook_xml:                  http://www.spc.noaa.gov/products/spcacrss.xml

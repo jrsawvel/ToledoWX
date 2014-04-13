@@ -1,6 +1,6 @@
 #!/usr/bin/perl -wT
 
-# wx-get-hourly-forecast.pl - display hourly forecast for next 24 hours
+# wx-get-hourly-forecast.pl - display hourly forecast for next 30 hours
 
 use strict;
 
@@ -101,7 +101,7 @@ sub merge_data {
 
     my @loop;
 
-    for (my $i=0; $i<24; $i++) {
+    for (my $i=0; $i<30; $i++) {
         my %hash = ();
 
         $hash{temperature}  = $hash_ref->{temperature}->[$i];
@@ -117,7 +117,7 @@ sub merge_data {
         $hash{startdate} = $tmp_hash{date};
 
         $hash{windchillexists} = 0;
-        if ( exists($hash_ref->{windchill}->[$i]) ) {
+        if ( exists($hash_ref->{windchill}->[$i]) and Utils::is_numeric($hash_ref->{windchill}->[$i]) ) {
             $hash{windchill} = $hash_ref->{windchill}->[$i];
             $hash{windchillexists} = 1;
         }
