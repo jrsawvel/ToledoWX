@@ -15,6 +15,7 @@
     site_name:                        Toledo Weather
 # tol sub    lucas_county_zone_xml:            http://forecast.weather.gov/MapClick.php?lat=41.66394&lon=-83.55521199999998&unit=0&lg=english&FcstType=dwml
     lucas_county_zone_xml:            http://forecast.weather.gov/MapClick.php?lat=41.61000&lon=-83.8&unit=0&lg=english&FcstType=dwml
+    lucas_county_zone_json:           http://forecast.weather.gov/MapClick.php?lat=41.61000&lon=-83.8&unit=0&lg=english&FcstType=json
     lucas_county_hourly_forecast_xml: http://forecast.weather.gov/MapClick.php?lat=41.59241&lon=-83.80838&FcstType=digitalDWML
     toledo_suburban_ap:               http://forecast.weather.gov/MapClick.php?lat=41.66394&lon=-83.55521199999998&unit=0&lg=english&FcstType=dwml
     toledo_executive_ap:              http://forecast.weather.gov/MapClick.php?lat=41.55700&lon=-83.62715700000001&unit=0&lg=english&FcstType=dwml
@@ -37,6 +38,7 @@
     spc_watch_box_image_url:          http://www.spc.noaa.gov/products/watch/validww.png
     spc_outlook_xml:                  http://www.spc.noaa.gov/products/spcacrss.xml
     spc_md_xml:                       http://www.spc.noaa.gov/products/spcmdrss.xml
+    lucas_county_alerts_xml:          http://alerts.weather.gov/cap/wwaatmget.php?x=OHC095&y=0 
     wx_hazardous_output_file:         hazardous-weather-outlook.html
     wx_conditions_output_file:        current-conditions.html
     wx_error_output_file:             errors.html

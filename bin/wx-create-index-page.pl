@@ -10,8 +10,10 @@ BEGIN {
     unshift @INC, "/home/toledotk/ToledoWX/lib";
 }
 
+use JSON::PP;
 use Weather::Web;
 use Data::Dumper;
+use HTML::Entities;
 
 my $current_date_time = Utils::get_formatted_date_time(); 
 my $html_output_filename =  Config::get_value_for("htmldir") . Config::get_value_for("wx_index_output_file");
@@ -57,38 +59,31 @@ my %forecast_dt = Utils::reformat_nws_date_time($forecast_creation_date);
 $forecast_creation_date = $forecast_dt{time} . $forecast_dt{period};
 
 
-# grabbing alert messages
 
+# grabbing alert messages
+# switched to json file on 10June2014
 my $alert_msg = "";
 
 # reference to an array of hashes - possibly unless only one hazard message exists and then it's not an array.
-my $test = $tree->{'dwml'}->{'data'}->[0]->{'parameters'}->{'hazards'};
+my $json_tree = read_and_parse_json_file("lucas_county_zone_json");
+
+# print Dumper $json_tree;
+
+my $hazard_text_array = $json_tree->{'data'}->{'hazard'};
+my $hazard_url_array  = $json_tree->{'data'}->{'hazardUrl'};
+my $array_len = @$hazard_text_array;
 
 my %alerts = ();
 
-if ( ref $test ne ref [] ) {
-    my $hazard_headline_one = lc($tree->{'dwml'}->{'data'}->[0]->{'parameters'}->{'hazards'}->{'hazard-conditions'}->{'hazard'}->{'-headline'});
-    my $hazard_url_one      = $tree->{'dwml'}->{'data'}->[0]->{'parameters'}->{'hazards'}->{'hazard-conditions'}->{'hazard'}->{'hazardTextURL'};
-    if ( $hazard_headline_one and $hazard_url_one ) {
-        if ( $hazard_headline_one eq "hazardous weather outlook" ) {
-            $hazardous_outlook_exists = 1;
-        }
-        $alerts{$hazard_headline_one} = $hazard_url_one;
+for (my $i=0; $i<$array_len; $i++) {
+    my $hazard     = lc($hazard_text_array->[$i]); 
+    my $hazard_url = $hazard_url_array->[$i];
+    if ( $hazard eq "hazardous weather outlook" ) {
+        $hazardous_outlook_exists = 1;
     }
-} else {
+    $alerts{$hazard} = $hazard_url;
+}
 
-    # looping through the reference to the array of hashes
-    foreach my $hz ( @$test ) {
-        # each hz in the loop is a hash
-        my $hazard     = lc($hz->{'hazard-conditions'}->{'hazard'}->{'-headline'}); 
-        my $hazard_url = $hz->{'hazard-conditions'}->{'hazard'}->{'hazardTextURL'};
-
-        if ( $hazard eq "hazardous weather outlook" ) {
-            $hazardous_outlook_exists = 1;
-        }
-        $alerts{$hazard} = $hazard_url;
-    }
-} 
 
 my $hazardous_outlook_time = "";
 
@@ -109,7 +104,7 @@ foreach my $key ( keys %alerts )
 {
     my %button_hash = ();
 
-    my $x_txt_url = $alerts{$key};
+    my $x_txt_url = decode_entities($alerts{$key});
     my $x_text = LWP::Simple::get($x_txt_url);  
     die "$current_date_time : Could not retrieve $x_txt_url" unless $text;
     $x_text = lc($x_text);
@@ -371,6 +366,37 @@ sub read_and_parse_xml_file {
 
     if ( !$tree ) {
         die "$current_date_time : could not parse $xml_url."; 
+    }
+
+    return $tree;
+}
+
+sub read_and_parse_json_file {
+    my $str = shift;
+
+    my $json_url = Config::get_value_for($str);
+
+    my $ua = LWP::UserAgent->new;
+    $ua->timeout(30); 
+    my $response = $ua->get($json_url);
+    if ( $response->is_error ) {
+       die "$current_date_time : could not retrieve $json_url. " . $response->status_line; 
+    }
+
+    my $result;
+    my $tree = "";
+
+    $result = eval {
+        my $content = $response->content;
+        $tree = decode_json $content;
+    };
+
+    unless ($result) {
+        die "$current_date_time : could not parse $json_url."; 
+    }
+
+    if ( !$tree ) {
+        die "$current_date_time : could not parse $json_url."; 
     }
 
     return $tree;
