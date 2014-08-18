@@ -12,6 +12,7 @@ BEGIN {
 
 use JSON::PP;
 use Weather::Web;
+use Weather::DateTimeFormatter;
 use Data::Dumper;
 use HTML::Entities;
 
@@ -97,12 +98,14 @@ if ( $text =~ m/^(.*)edt(.*)$/m ) {
 
 
 my @alert_button_loop;
+my @alert_rss_loop;
 
 my $alert_buttons_exist = 0;
 
 foreach my $key ( keys %alerts )
 {
     my %button_hash = ();
+    my %rss_hash = ();
 
     my $x_txt_url = decode_entities($alerts{$key});
     my $x_text = LWP::Simple::get($x_txt_url);  
@@ -119,9 +122,14 @@ foreach my $key ( keys %alerts )
     }    
 
     my $alert_time = "";
+    my $alert_date = "";
+    my $orig_alert_time = "";
     if ( $msg =~ m/^(.*)edt(.*)$/m ) {
         $alert_time = $1; 
         $alert_time = Utils::reformat_nws_text_time($alert_time);
+
+        $orig_alert_time = $1; 
+        $alert_date = $2; 
     }
 
     if ( $key eq "hazardous weather outlook" and $msg =~ m/(.*)lez061(.*)this hazardous weather outlook is(.*)/s ) {
@@ -151,15 +159,28 @@ foreach my $key ( keys %alerts )
     close FILE;
 
     $button_hash{alert} = Utils::ucfirst_each_word($key);
+    $rss_hash{alert}    = Utils::ucfirst_each_word($key);
 
-    $button_hash{url} = $filename;
+    $button_hash{url}        = $filename;
+    $rss_hash{url}           = $filename;
+
     $button_hash{alert_time} = $alert_time;
-    $button_hash{wxhome} = Config::get_value_for("wxhome");
+    $rss_hash{alert_date}    = _reformat_date($alert_date);
+    $rss_hash{alert_time}    = _reformat_time($alert_time);
+
+    $button_hash{wxhome}     = Config::get_value_for("wxhome");
+    $rss_hash{wxhome}        = Config::get_value_for("wxhome");
+
     push(@alert_button_loop, \%button_hash);
+    push(@alert_rss_loop, \%rss_hash);
+
     $alert_buttons_exist = 1;
 }
 
 my @meso_loop = get_mesoscale_info();
+
+output_rss_file(\@alert_rss_loop);
+
 
 
 Web::set_template_name("wxindex");
@@ -170,7 +191,9 @@ Web::set_template_variable("refresh_button_url", Config::get_value_for("home_pag
 Web::set_template_variable("hazardous_outlook_exists", $hazardous_outlook_exists);
 Web::set_template_variable("hazardous_outlook_time", $hazardous_outlook_time);
 
-Web::set_template_loop_data("buttonalerts" , \@alert_button_loop);
+my @reversed_alert_button_loop = reverse @alert_button_loop;
+
+Web::set_template_loop_data("buttonalerts" , \@reversed_alert_button_loop);
 
 Web::set_template_variable("conditions_time",        $conditions{updatedate});
 Web::set_template_variable("conditions_weather",     $conditions{weather});
@@ -192,6 +215,32 @@ open FILE, ">$html_output_filename" or die "$current_date_time : could not creat
 print FILE $html_output;
 close FILE;
 
+
+
+sub output_rss_file {
+    my $alerts = shift;
+
+    my @alert_button_loop = reverse (@$alerts);
+
+    # Wed, 06 Aug 2014 11:52:01 GMT
+    my $pub_date = DateTimeFormatter::create_date_time_stamp_utc("(dayname), (0daynum) (monthname) (yearfull) (012hr):(0min):(0sec)") . " GMT";
+
+    Web::set_template_name("wx-alerts-rss");
+    Web::set_template_variable("pub_date", $pub_date);
+    Web::set_template_loop_data("alerts" , \@alert_button_loop);
+    my $rss_output = Web::display_rss_page("Toledo Weather Alert RSS", "returnoutput");
+
+    my $rss_output_filename =  Config::get_value_for("htmldir") . "alerts.rss";
+    if ( $rss_output_filename =~  m/^([a-zA-Z0-9\/\.\-_]+)$/ ) {
+        $rss_output_filename = $1;
+    } else {
+        die "$current_date_time : Bad filename $rss_output_filename."; 
+    }
+
+    open FILE, ">$rss_output_filename" or die "$current_date_time : could not create file $rss_output_filename";
+    print FILE $rss_output;
+    close FILE;
+}
 
 sub get_mesoscale_info {
 
@@ -401,3 +450,43 @@ sub read_and_parse_json_file {
 
     return $tree;
 }
+
+# have tue aug 5 2014 751 am 
+# have tue aug 5 2014 7:51 am 
+# need Aug 5, 2014 07:51:01
+#
+sub _reformat_date {
+    my $alert_date = shift;
+
+    $alert_date = Utils::trim_spaces($alert_date);
+
+    my @dt = split(' ', $alert_date);
+
+    my $dayname = ucfirst($dt[0]);
+
+    my $mon = ucfirst($dt[1]);
+
+    my $daynum = sprintf "%02d", $dt[2];
+
+    my $year = $dt[3];
+
+    return "$dayname, $daynum $mon $year";
+}
+
+sub _reformat_time {
+    my $alert_time = shift;
+
+    $alert_time = Utils::trim_spaces($alert_time);
+    $alert_time =~ s/am//ig;
+    $alert_time =~ s/pm//ig;
+
+    my @t = split(':', $alert_time);
+
+    my $hr  = sprintf "%02d", $t[0];
+    my $min = $t[1];
+
+    return "$hr:$min:01 GMT";
+}
+
+    # pubDate format: Tue, 04 Oct 2005 12:52:43 Z
+

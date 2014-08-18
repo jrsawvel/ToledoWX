@@ -1,0 +1,17 @@
+<rss version="2.0" xmlns:rss5="http://rss5.org/">
+  <channel>
+   <title>Toledo Weather</title>
+   <link>http://toledotalk.com/weather</link>
+   <description>Toledo Weather - Maps, Forecasts, NWS Details</description>
+   <pubDate><!-- tmpl_var name="pub_date" --></pubDate>
+   <language>en-us</language>
+<tmpl_loop name="alerts_loop">    <item>
+     <title><!-- tmpl_var name="alert" --></title>
+     <description></description>
+     <pubDate><!-- tmpl_var name="alert_date" --> <!-- tmpl_var name="alert_time" --></pubDate>
+     <guid><!-- tmpl_var name="wxhome" -->/<!-- tmpl_var name="url" --></guid>
+     <link><!-- tmpl_var name="wxhome" -->/<!-- tmpl_var name="url" --></link>
+     <author>ToledoWX</author>
+    </item></tmpl_loop>
+  </channel>
+</rss>
