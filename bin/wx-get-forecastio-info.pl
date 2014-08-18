@@ -12,8 +12,12 @@ BEGIN {
 
 use Weather::Web;
 use Weather::ForecastIO;
+use Weather::Yo;
 use Weather::DateTimeFormatter;
 use Data::Dumper;
+
+my $prob_hit = 0;
+my $inten_hit = 0;
 
 my $dt = Utils::get_formatted_date_time(); 
 
@@ -45,7 +49,14 @@ if ( @minutely ) {
         $hash{date}              = DateTimeFormatter::create_date_time_stamp_local( $m->time, "(dayname), (monthname) (daynum), (yearfull)");
         $hash{precipType}        = $m->precipType; 
         $hash{precipProbability} = $m->precipProbability * 100; 
+
+        $prob_hit = 1 if $hash{precipProbability} >= 50;
+        
         $hash{precipIntensity}   = ForecastIOUtils::calc_intensity($m->precipIntensity); 
+
+        my $itensity = $m->precipIntensity * 1000;
+        $inten_hit = 1 if $itensity >= 150; # in the mod-hvy cat
+
         $hash{precipcolor}       = ForecastIOUtils::calc_intensity_color($m->precipIntensity); 
         push(@toledo_minutely_loop, \%hash);
     }
@@ -74,7 +85,6 @@ my $current_date_time = Utils::get_formatted_date_time();
 Web::set_template_variable("currently_winddirection", $wind_direction);
 Web::set_template_variable("currently_windspeed", $wind_speed);
 Web::set_template_variable("hourly_summary", $forecastio->hourlysummary);
-Web::set_template_variable("daily_summary", $daily_summary);
 Web::set_template_variable("toledo_latitude", $latitude);
 Web::set_template_variable("toledo_longitude", $longitude);
 
@@ -92,7 +102,14 @@ if ( @sylvania_minutely ) {
         $hash{date}              = DateTimeFormatter::create_date_time_stamp_local( $m->time, "(dayname), (monthname) (daynum), (yearfull)");
         $hash{precipType}        = $m->precipType; 
         $hash{precipProbability} = $m->precipProbability * 100; 
+
+        $prob_hit = 1 if $hash{precipProbability} >= 50;
+
         $hash{precipIntensity}   = ForecastIOUtils::calc_intensity($m->precipIntensity); 
+
+        my $itensity = $m->precipIntensity * 1000;
+        $inten_hit = 1 if $itensity >= 150; # in the mod-hvy cat
+
         $hash{precipcolor}       = ForecastIOUtils::calc_intensity_color($m->precipIntensity); 
         push(@sylvania_minutely_loop, \%hash);
     }
@@ -159,5 +176,14 @@ my $html_output = Web::display_page("Forecast for Next Hour", "returnoutput");
 open (my $fh, ">", $filename) or die "$dt : could not create file $filename";
 print $fh $html_output;
 close $fh;
+
+
+# for user api account HEAVYRAINTOLEDO
+my $yo_api_token = Config::get_value_for("yo_api_token");
+
+if ( $prob_hit and $inten_hit ) {
+    my $yo = Yo->new($yo_api_token);
+    $yo->all;
+}
 
 
