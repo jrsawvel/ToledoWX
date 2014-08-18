@@ -1,5 +1,4 @@
 
-
 .wx-alert {color: darkred;}
 .wx-alert a {color: darkred;}
 .wx-alert a:visited {color: darkred;}
@@ -27,6 +26,9 @@ img {
     color: #000000;
 }
 
+#footer {
+}
+
 @media only screen and (min-width: 769px) {
   .ui-page {
       width: 40em !important;
@@ -38,5 +40,16 @@ img {
 @media only screen and (max-width: 1024px) {
     #wx-content {
         color: #444444;
+    }
+}
+
+@media only screen and (max-width: 320px) { 
+    .scroll_text {
+/*        position: absolute; 
+*/
+        height: 700px;
+        width: 100%;
+        overflow-y: auto; 
+        -webkit-overflow-scrolling: touch;
     }
 }
