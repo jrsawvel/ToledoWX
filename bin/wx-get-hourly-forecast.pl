@@ -81,8 +81,8 @@ sub read_xml {
 
 $result = eval {
     $hash{starttime}     = $tree->{'dwml'}->{'data'}->{'time-layout'}->{'start-valid-time'};
-    $hash{temperature}   = $tree->{'dwml'}->{'data'}->{'parameters'}->{'temperature'}->[0]->{'value'};
-    $hash{windchill}     = $tree->{'dwml'}->{'data'}->{'parameters'}->{'temperature'}->[2]->{'value'};
+    $hash{temperature}   = $tree->{'dwml'}->{'data'}->{'parameters'}->{'temperature'}->[2]->{'value'};
+    $hash{windchill}     = $tree->{'dwml'}->{'data'}->{'parameters'}->{'temperature'}->[1]->{'value'};
     $hash{winddirection} = $tree->{'dwml'}->{'data'}->{'parameters'}->{'direction'}->{'value'};
     $hash{windspeed}     = $tree->{'dwml'}->{'data'}->{'parameters'}->{'wind-speed'}->[0]->{'value'};
     $hash{precipchance}  = $tree->{'dwml'}->{'data'}->{'parameters'}->{'probability-of-precipitation'}->{'value'};
@@ -118,6 +118,10 @@ sub merge_data {
 
         $hash{windchillexists} = 0;
         if ( exists($hash_ref->{windchill}->[$i]) and Utils::is_numeric($hash_ref->{windchill}->[$i]) ) {
+            $hash{windchill} = $hash_ref->{windchill}->[$i];
+            $hash{windchillexists} = 1;
+        }
+        if ( exists($hash_ref->{windchill}->[$i]) and $hash_ref->{windchill}->[$i] == 0 ) {
             $hash{windchill} = $hash_ref->{windchill}->[$i];
             $hash{windchillexists} = 1;
         }

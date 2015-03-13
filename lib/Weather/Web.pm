@@ -50,6 +50,34 @@ sub display_page {
     exit;
 }
 
+sub display_rss_page {
+    my $function = shift;
+    my $output_type = shift;
+
+#    my $dt = Utils::get_date_time(time());
+#    my $datetimestr = "$dt->{mon} $dt->{day}, $dt->{year} - $dt->{hour}:$dt->{min} $dt->{ampm} $dt->{tz}";
+
+# creating static html pages so don't need this    
+# print $http_header[$http_header_var]; 
+
+#    my $site_name       =  Config::get_value_for("site_name");
+
+#    set_template_variable("pagetitle",          "$function - $site_name");
+#    set_template_variable("home_page",          Config::get_value_for("home_page"));
+#    set_template_variable("site_name",          $site_name);
+#    set_template_variable("cssurl",             Config::get_value_for("cssurl"));  
+
+#    set_template_variable("pagecreateddate",   $datetimestr);
+    # set_template_variable("requesturi",       $ENV{REQUEST_URI});
+
+    if ( $output_type and $output_type eq "returnoutput" ) {
+        return $kestrel_template->output;
+    } 
+
+    print $kestrel_template->output;
+    exit;
+}
+
 sub set_template_name {
     my $template_name = shift;
     $kestrel_template = HTML::Template->new(filename => "$wx_th/$template_name.tmpl");

@@ -56,8 +56,8 @@
     wx_hourly_forecast_output_file:   hourly-forecast.html
     wx_forecastio_output_file:        forecastio.html
     spcmesoscalegifhome:              http://www.spc.noaa.gov/products/md
-    forecastio_api_key:               forecastio-api-key
-    yo_api_token:                     yo-api-token
+    forecastio_api_key:               cd50a948f24600c7cc2986548ee741f1
+    yo_api_token:                     734e5f22-9a08-af8e-11c0-2ab3d7c6b7ed
     forecastio_latitude:              41.665556
     forecastio_longitude:             -83.575278
     sylvania_forecastio_latitude:     41.711389

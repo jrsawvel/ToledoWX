@@ -85,6 +85,7 @@ my $current_date_time = Utils::get_formatted_date_time();
 Web::set_template_variable("currently_winddirection", $wind_direction);
 Web::set_template_variable("currently_windspeed", $wind_speed);
 Web::set_template_variable("hourly_summary", $forecastio->hourlysummary);
+Web::set_template_variable("daily_summary", $daily_summary);
 Web::set_template_variable("toledo_latitude", $latitude);
 Web::set_template_variable("toledo_longitude", $longitude);
 

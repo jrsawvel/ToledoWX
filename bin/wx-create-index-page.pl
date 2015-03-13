@@ -31,7 +31,7 @@ my $discussion_text = LWP::Simple::get($discussion_url);
 die "$current_date_time : Could not retrieve $discussion_url" unless $discussion_text;
 my $discussion_time = "";
 $discussion_text = lc($discussion_text);
-if ( $discussion_text =~ m/^(.*)edt(.*)$/m ) {
+if ( $discussion_text =~ m/^(.*)est(.*)$/m ) {
     $discussion_time = $1; 
     $discussion_time = Utils::reformat_nws_text_time($discussion_time);
 }
@@ -41,7 +41,7 @@ my $marine_text = LWP::Simple::get($marine_url);
 die "$current_date_time : Could not retrieve $marine_url" unless $marine_text;
 my $marine_time = "";
 $marine_text = lc($marine_text);
-if ( $marine_text =~ m/^(.*)edt(.*)$/m ) {
+if ( $marine_text =~ m/^(.*)est(.*)$/m ) {
     $marine_time = $1; 
     $marine_time = Utils::reformat_nws_text_time($marine_time);
 }
@@ -92,7 +92,7 @@ my $txt_url = Config::get_value_for("hazardous_outlook");
 my $text = LWP::Simple::get($txt_url);  
 die "$current_date_time : Could not retrieve $txt_url" unless $text;
 $text = lc($text);
-if ( $text =~ m/^(.*)edt(.*)$/m ) {
+if ( $text =~ m/^(.*)est(.*)$/m ) {
     $hazardous_outlook_time = $1; 
 }
 
@@ -117,14 +117,16 @@ foreach my $key ( keys %alerts )
         $msg = $1;
     } elsif ( $x_text =~ m/<h3>$key<\/h3><pre>(.*)<\/pre><hr \/><br \/>/is ) {
         $msg = $1;
+    } elsif ( $x_text =~ m/<h3>$key<\/h3><pre>(.*)<\/pre><hr\/><br\/>/is ) {
+        $msg = $1;
     } else {
-        die "$current_date_time : could not parse file.";
+        die "$current_date_time : could not parse file. $x_text \n";
     }    
 
     my $alert_time = "";
     my $alert_date = "";
     my $orig_alert_time = "";
-    if ( $msg =~ m/^(.*)edt(.*)$/m ) {
+    if ( $msg =~ m/^(.*)est(.*)$/m ) {
         $alert_time = $1; 
         $alert_time = Utils::reformat_nws_text_time($alert_time);
 
@@ -284,12 +286,12 @@ sub process_md_hash_ref {
                 $content = Utils::remove_html($content);
                 $content = Utils::trim_spaces($content);
                 $content = lc($content);
-                if ( $content =~ m/^(.*)edt(.*)$/m ) {
+                if ( $content =~ m/^(.*)est(.*)$/m ) {
                     $mdtime = $1; 
                     $mdtime = Utils::reformat_nws_text_time($mdtime);
-                } elsif ( $content =~ m/^(.*)cdt(.*)$/m ) {
+                } elsif ( $content =~ m/^(.*)cst(.*)$/m ) {
                     $mdtime = $1; 
-                    $mdtime = Utils::reformat_nws_text_time($mdtime, "cdt");
+                    $mdtime = Utils::reformat_nws_text_time($mdtime, "cst");
                 }
                 $content = Utils::newline_to_br($content);
 
