@@ -184,7 +184,6 @@ my @meso_loop = get_mesoscale_info();
 output_rss_file(\@alert_rss_loop);
 
 
-
 Web::set_template_name("wxindex");
 
 Web::set_template_variable("refresh_button", 1);
