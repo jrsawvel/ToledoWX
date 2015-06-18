@@ -156,6 +156,12 @@ sub get_hazards {
             $hash{'pubDate'}  = "";
             push(@array, \%hash); 
         }
+        elsif ( $hazard eq "Short Term Forecast" ) {
+            $hash{'title'}  = $hazard;
+            $hash{'link'}   = $hazard_url_array->[$i];
+            $hash{'pubDate'}  = "";
+            push(@array, \%hash); 
+        }
     }
 
     return @array;
