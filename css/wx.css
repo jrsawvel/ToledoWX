@@ -47,9 +47,11 @@ img {
     .scroll_text {
 /*        position: absolute; 
 */
+/*
         height: 700px;
         width: 100%;
         overflow-y: auto; 
         -webkit-overflow-scrolling: touch;
+*/
     }
 }

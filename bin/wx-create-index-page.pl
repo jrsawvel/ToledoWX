@@ -7,7 +7,7 @@ use strict;
 $|++;
 
 BEGIN {
-    unshift @INC, "/home/toledotk/ToledoWX/lib";
+    unshift @INC, "/home/toledoweather/ToledoWX/lib";
 }
 
 use JSON::PP;

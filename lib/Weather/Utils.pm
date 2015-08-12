@@ -11,6 +11,7 @@ my $offset = -5;     # EST offset from GMT
 
 # determine if it's daylight savings time for eastern time zone
 my $isdst = (localtime)[8];
+$isdst = 1;
 if ( $isdst ) {
     $offset = -4;
 } 

@@ -1,0 +1,19 @@
+0,15,30,45 * * * *       /home/toledoweather/ToledoWX/bin/wx-get-forecast.pl                  2>> /home/toledoweather/ToledoWX/log/error.txt
+0,30 * * * *             /home/toledoweather/ToledoWX/bin/wx-get-hourly-forecast.pl           2>> /home/toledoweather/ToledoWX/log/error.txt
+0,15,30,45 * * * *       /home/toledoweather/ToledoWX/bin/wx-get-conditions.pl                2>> /home/toledoweather/ToledoWX/log/error.txt
+0,30 * * * *             /home/toledoweather/ToledoWX/bin/wx-get-marine-forecast.pl           2>> /home/toledoweather/ToledoWX/log/error.txt
+0,15,30,45 * * * *       /home/toledoweather/ToledoWX/bin/wx-get-discussion.pl                2>> /home/toledoweather/ToledoWX/log/error.txt
+1,16,31,46 * * * *       /home/toledoweather/ToledoWX/bin/wx-get-det-discussion.pl            2>> /home/toledoweather/ToledoWX/log/error.txt
+2,17,32,47 * * * *       /home/toledoweather/ToledoWX/bin/wx-get-nind-discussion.pl           2>> /home/toledoweather/ToledoWX/log/error.txt
+3,18,33,48 * * * *       /home/toledoweather/ToledoWX/bin/wx-get-afds.pl                      2>> /home/toledoweather/ToledoWX/log/error.txt
+0,30 * * * *             /home/toledoweather/ToledoWX/bin/wx-get-hazardous.pl                 2>> /home/toledoweather/ToledoWX/log/error.txt
+0,30 * * * *             /home/toledoweather/ToledoWX/bin/wx-get-outlook-day-4-8.pl           2>> /home/toledoweather/ToledoWX/log/error.txt
+0,30 * * * *             /home/toledoweather/ToledoWX/bin/wx-get-outlook-gifs.pl              2>> /home/toledoweather/ToledoWX/log/error.txt
+0,30 * * * *             /home/toledoweather/ToledoWX/bin/wx-get-outlook-html.pl              2>> /home/toledoweather/ToledoWX/log/error.txt
+0 0,6,12,18 * * *        /home/toledoweather/ToledoWX/bin/wx-create-radar-page.pl             2>> /home/toledoweather/ToledoWX/log/error.txt
+0 0,6,12,18 * * *        /home/toledoweather/ToledoWX/bin/wx-create-more-radars-maps-page.pl  2>> /home/toledoweather/ToledoWX/log/error.txt
+0 0,6,12,18 * * *        /home/toledoweather/ToledoWX/bin/wx-create-external-links-page.pl    2>> /home/toledoweather/ToledoWX/log/error.txt
+0,15,30,45 * * * *       /home/toledoweather/ToledoWX/bin/wx-get-spc-images.pl                2>> /home/toledoweather/ToledoWX/log/error.txt
+0,10,20,30,40,50 * * * * /home/toledoweather/ToledoWX/bin/wx-create-index-page.pl             2>> /home/toledoweather/ToledoWX/log/error.txt
+0,15,30,45 * * * *       /home/toledoweather/ToledoWX/bin/wx-create-error-page.pl 
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * /home/toledoweather/ToledoWX/bin/wx-get-forecastio-info.pl      2>> /home/toledoweather/ToledoWX/log/error.txt

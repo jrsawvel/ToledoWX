@@ -5,7 +5,7 @@ use strict;
 $|++;
 
 BEGIN {
-    unshift @INC, "/home/toledotk/ToledoWX/lib";
+    unshift @INC, "/home/toledoweather/ToledoWX/lib";
 }
 
 
@@ -127,7 +127,8 @@ sub get_alerts {
         my %hash;
         $hash{'link'}  = $item->link();
         # $hash{'title'} = $item->title();
-        $hash{'title'} = $item->get("cap:event");
+        $hash{'title'} = "";
+        $hash{'title'} = $item->get("cap:event") if $item->get("cap:event");
         # $hash{'desc'}  = $item->description();
         $hash{'pubDate'}  = reformat_nws_date_time($item->pubDate());
         push(@array, \%hash); 
@@ -213,7 +214,7 @@ sub create_rss {
 <rss version="2.0" xmlns:rss5="http://rss5.org/">
   <channel>
    <title>Toledo Weather Messages</title>
-   <link>http://toledotalk.com/weather</link>
+   <link>http://toledoweather.info/weather</link>
    <description>Watches, Warnings, Advisories, Discussions</description>
    <pubDate>$pub_date</pubDate>
    <language>en-us</language>
@@ -301,7 +302,14 @@ sub reformat_nws_date_time {
     my @values = split('T', $nws_date_time_str);
 
     # work on time first
-    my @hrminsec = split('-', $values[1]);
+    my @hrminsec;
+
+    if ( $values[1] =~ /-/ ) {
+        @hrminsec = split('-', $values[1]);
+    } elsif ( $values[1] =~ /\+/ ) {
+        @hrminsec = split('\+', $values[1]);
+    }
+
     my @time = split(':', $hrminsec[0]);
     my $hr = $time[0];
     my $min = $time[1];

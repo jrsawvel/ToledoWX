@@ -1,17 +1,18 @@
 ---
-    home_page:                        http://toledotalk.com/weather/html/wx.html
-    outlook_home_page:                http://toledotalk.com/weather/html/convective-outlook.html
-    afds_home_page:                   http://toledotalk.com/weather/html/area-forecast-discussions.html
-    radar_home_page:                  http://toledotalk.com/weather/html/radar.html
-    errors_home_page:                 http://toledotalk.com/weather/html/errors.html
-    more_radars_maps_home_page:       http://toledotalk.com/weather/html/more-radars-and-maps.html
-    wxhome:                           http://toledotalk.com/weather/html
-    imagehome:                        http://toledotalk.com/weather/images
-    cssurl:                           http://www.toledotalk.com/weather/html/wx.css
-    imagedir:                         /home/toledotk/public_html/weather/images/
-    htmldir:                          /home/toledotk/public_html/weather/html/
-    errors_file:                      /home/toledotk/ToledoWX/log/error.txt
-    template_home:                    /home/toledotk/ToledoWX/tmpl
+#    home_page:                        http://toledoweather.info/index.html
+    home_page:                        /
+    outlook_home_page:                http://toledoweather.info/convective-outlook.html
+    afds_home_page:                   http://toledoweather.info/area-forecast-discussions.html
+    radar_home_page:                  http://toledoweather.info/radar.html
+    errors_home_page:                 http://toledoweather.info/errors.html
+    more_radars_maps_home_page:       http://toledoweather.info/more-radars-and-maps.html
+    wxhome:                           http://toledoweather.info
+    imagehome:                        http://toledoweather.info/images
+    cssurl:                           http://toledoweather.info/css/wx.css
+    imagedir:                         /home/toledoweather/root/images/
+    htmldir:                          /home/toledoweather/root/
+    errors_file:                      /home/toledoweather/ToledoWX/log/error.txt
+    template_home:                    /home/toledoweather/ToledoWX/tmpl
     site_name:                        Toledo Weather
 # tol sub    lucas_county_zone_xml:            http://forecast.weather.gov/MapClick.php?lat=41.66394&lon=-83.55521199999998&unit=0&lg=english&FcstType=dwml
     lucas_county_zone_xml:            http://forecast.weather.gov/MapClick.php?lat=41.61000&lon=-83.8&unit=0&lg=english&FcstType=dwml
@@ -52,7 +53,8 @@
     wx_radar_output_file:             radar.html
     wx_more_radars_maps_output_file:  more-radars-and-maps.html
     wx_links_output_file:             external-links.html
-    wx_index_output_file:             wx.html
+#    wx_index_output_file:             wx.html
+    wx_index_output_file:             index.html
     wx_hourly_forecast_output_file:   hourly-forecast.html
     wx_forecastio_output_file:        forecastio.html
     spcmesoscalegifhome:              http://www.spc.noaa.gov/products/md

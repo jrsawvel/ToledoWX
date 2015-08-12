@@ -3,11 +3,13 @@
 # wx-get-forecast.pl
 
 use strict;
+use warnings;
+use diagnostics;
 
 $|++;
 
 BEGIN {
-    unshift @INC, "/home/toledotk/ToledoWX/lib";
+    unshift @INC, "/home/toledoweather/ToledoWX/lib";
 }
 
 use Weather::Web;

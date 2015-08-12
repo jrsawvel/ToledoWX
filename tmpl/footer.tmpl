@@ -9,6 +9,17 @@
 </div> <!-- close scroll_text -->
 
 </div>
+
+<script type="text/javascript"> 
+if (typeof timer == 'undefined')  {
+// setInterval uses milliseconds. 60000 = 1 min. 
+// using 10 minutes
+  var timer = setInterval("autoRefresh()", 1000 * 60 * 10);
+  function autoRefresh(){self.location.reload(true);}
+}
+</script>
+
+
 </body>
 </html>
 
