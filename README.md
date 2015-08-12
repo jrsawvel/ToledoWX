@@ -3,11 +3,7 @@
 Toledo, Ohio area weather information that is pulled from National Weather Serivce XML files and HTML pages.
 
 Working example:  
-http://toledotalk.com/weather/html/wx.html
-
-Mentioned here:  
-http://toledotalk.com/cgi-bin/tt.pl/Simple_weather_page
-
+http://toledoweather.info
 
 WX or "weather" in Morse code telegraph shorthand (per Wikipedia)
 
@@ -33,6 +29,7 @@ The following pure Perl modules were downloaded and included within this app's l
 * XML::TreePP
 * XML::FeedPP
 * YAML::Tiny
+* JSON::PP
 
 
 
