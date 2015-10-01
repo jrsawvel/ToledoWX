@@ -1,0 +1,23 @@
+
+##########
+# toledoweather.info
+##########
+
+
+ server {
+
+	listen   80; ## listen for ipv4; this line is default and implied
+
+	root /home/toledoweather/root;
+        index index.html;
+
+	# Make site accessible from http://localhost/
+	server_name toledoweather.info www.toledoweather.info;
+
+        location ~ ^/(css/|images/) {
+          root /home/toledoweather/root;
+          access_log off;
+          # expires max;
+          expires -1;
+        }
+}
