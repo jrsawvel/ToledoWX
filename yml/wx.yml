@@ -16,9 +16,15 @@
     site_name:                        Toledo Weather
 # tol sub    lucas_county_zone_xml:            http://forecast.weather.gov/MapClick.php?lat=41.66394&lon=-83.55521199999998&unit=0&lg=english&FcstType=dwml
     lucas_county_zone_xml:            http://forecast.weather.gov/MapClick.php?lat=41.61000&lon=-83.8&unit=0&lg=english&FcstType=dwml
-    lucas_county_zone_json:           http://forecast.weather.gov/MapClick.php?lat=41.61000&lon=-83.8&unit=0&lg=english&FcstType=json
+#    lucas_county_zone_json:           http://forecast.weather.gov/MapClick.php?lat=41.61000&lon=-83.8&unit=0&lg=english&FcstType=json
+    lucas_county_zone_json:            http://forecast.weather.gov/MapClick.php?lat=41.5924&lon=-83.8084&unit=0&lg=english&FcstType=json
+#
+## using KDUH Toledo Suburban Airport starting on Dec 2, 2015 because KTOL feeds don't exist for some reason
+#    lucas_county_zone_xml:            http://forecast.weather.gov/MapClick.php?lat=41.7359&lon=-83.6533&unit=0&lg=english&FcstType=dwml
+#    lucas_county_zone_json:           http://forecast.weather.gov/MapClick.php?lat=41.7359&lon=-83.6533&unit=0&lg=english&FcstType=json
+#
     lucas_county_hourly_forecast_xml: http://forecast.weather.gov/MapClick.php?lat=41.59241&lon=-83.80838&FcstType=digitalDWML
-    toledo_suburban_ap:               http://forecast.weather.gov/MapClick.php?lat=41.66394&lon=-83.55521199999998&unit=0&lg=english&FcstType=dwml
+    toledo_suburban_ap:               http://forecast.weather.gov/MapClick.php?lat=41.7359&lon=-83.6533&unit=0&lg=english&FcstType=dwml
     toledo_executive_ap:              http://forecast.weather.gov/MapClick.php?lat=41.55700&lon=-83.62715700000001&unit=0&lg=english&FcstType=dwml
 #    marine_forecast:                  http://weather.noaa.gov/pub/data/forecasts/marine/near_shore/le/lez145.txt
     marine_forecast:                  http://weather.noaa.gov/pub/data/raw/fz/fzus51.kcle.nsh.cle.txt
