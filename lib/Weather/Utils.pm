@@ -13,7 +13,7 @@ my $offset = -5;     # EST offset from GMT
 my $isdst = (localtime)[8];
 $isdst = 1;
 if ( $isdst ) {
-    $offset = -5;
+    $offset = -4;
 } 
 
 ########## public procedures ##########

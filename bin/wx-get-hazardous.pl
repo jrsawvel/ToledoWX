@@ -37,11 +37,18 @@ if ($response->is_success) {
 
     $content = lc($content);
 
-    if ( $content =~ m/(.*)lez061(.*)this hazardous weather outlook is(.*)/s ) {
-        $content = $1 . "<br />" .  $3;
+# noaa discontinued its old text service on aug 23, 2016
+#
+#    if ( $content =~ m/(.*)lez061(.*)this hazardous weather outlook is(.*)/s ) {
+#        $content = $1 . "<br />" .  $3;
+#    }
+#    $content =~ s/^[.]/<br \/>/gm;
+
+
+    if ( $content =~ m/hwocle(.*)lez061/s ) {
+        $content = Utils::trim_spaces($1);
     }
 
-    $content =~ s/^[.]/<br \/>/gm;
     $content = Utils::newline_to_br($content);
 
     Web::set_template_name("hazardous");

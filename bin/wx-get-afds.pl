@@ -46,9 +46,16 @@ sub get_afd {
     }
 
     my $content = $response->content;
-    $content =~ s/^[.]/<br \/>/gm;
-    $content = Utils::newline_to_br($content);
     $content = lc($content);
+
+#    $content =~ s/^[.]/<br \/>/gm;
+
+    if ( $content =~ m/<pre class="glossaryproduct">(.*)<\/pre>/s ) {
+        $content = $1;        
+    }
+
+    $content = Utils::trim_spaces($content);
+    $content = Utils::newline_to_br($content);
 
     return $content;
 }

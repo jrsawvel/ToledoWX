@@ -27,11 +27,14 @@
     toledo_suburban_ap:               http://forecast.weather.gov/MapClick.php?lat=41.7359&lon=-83.6533&unit=0&lg=english&FcstType=dwml
     toledo_executive_ap:              http://forecast.weather.gov/MapClick.php?lat=41.55700&lon=-83.62715700000001&unit=0&lg=english&FcstType=dwml
 #    marine_forecast:                  http://weather.noaa.gov/pub/data/forecasts/marine/near_shore/le/lez145.txt
-    marine_forecast:                  http://weather.noaa.gov/pub/data/raw/fz/fzus51.kcle.nsh.cle.txt
-    hazardous_outlook:                http://weather.noaa.gov/pub/data/raw/fl/flus41.kcle.hwo.cle.txt
-    forecast_discussion:              http://weather.noaa.gov/pub/data/raw/fx/fxus61.kcle.afd.cle.txt
-    det_forecast_discussion:          http://weather.noaa.gov/pub/data/raw/fx/fxus63.kdtx.afd.dtx.txt
-    nind_forecast_discussion:         http://weather.noaa.gov/pub/data/raw/fx/fxus63.kiwx.afd.iwx.txt
+#    marine_forecast:                  http://weather.noaa.gov/pub/data/raw/fz/fzus51.kcle.nsh.cle.txt
+    marine_forecast:                  http://forecast.weather.gov/product.php?site=CRH&issuedby=CLE&product=NSH&format=txt&version=1&glossary=0
+#    hazardous_outlook:                http://weather.noaa.gov/pub/data/raw/fl/flus41.kcle.hwo.cle.txt
+    hazardous_outlook:                http://forecast.weather.gov/product.php?site=CRH&issuedby=CLE&product=HWO&format=txt&version=1&glossary=0
+#    forecast_discussion:              http://weather.noaa.gov/pub/data/raw/fx/fxus61.kcle.afd.cle.txt
+    forecast_discussion:              http://forecast.weather.gov/product.php?site=CRH&issuedby=CLE&product=AFD&format=txt&version=1&glossary=0
+    det_forecast_discussion:          http://forecast.weather.gov/product.php?site=CRH&issuedby=DTX&product=AFD&format=txt&version=1&glossary=0
+    nind_forecast_discussion:         http://forecast.weather.gov/product.php?site=CRH&issuedby=IWX&product=AFD&format=txt&version=1&glossary=0
     spcoutlookgifhome:                http://www.spc.noaa.gov/products/outlook
     day1outlookgif:                   http://www.spc.noaa.gov/products/outlook/day1otlk_2000.gif
     day2outlookgif:                   http://www.spc.noaa.gov/products/outlook/day2otlk_1730.gif
