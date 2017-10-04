@@ -3,35 +3,44 @@
 ToledoWX displays Toledo, Ohio weather information that is pulled from National Weather Serivce XML files, JSON files, plain text files, and HTML pages.
 
 Working example:  
-http://toledoweather.info
+<http://toledoweather.info>
 
 WX or "weather" in Morse code telegraph shorthand (per Wikipedia)
 
 Not to be confused with Perl's Wx library interface to the wxWidgets cross-platform GUI toolkit.
 
-This could be used for other areas of the country by pointing the to the appropriate XML and HTML files.
+ToledoWX could be used for other areas of the country by pointing to the appropriate XML, JSON, and HTML files.
 
 
 ---
 
-**Update 04Oct2017 :** - In late September 2017, I made changes and additions to create a Flash Briefing that gets read by Alexa on Amazon's Echo home smart speaker. A new script creates a summary of info pulled from current conditions at Toledo Express Airport, the seven-day forecast, the area forecast discussion, and any important statements that exist. An HTML version of this briefing can be accessed from the toledoweather.info homepage. The link is <http://toledoweather.info/briefing.html>. For Alexa/Echo, I created a JSON file, found at <http://toledoweather.info/briefing.json>. Alexa can also read an RSS version. In cron (batch), my new Alexa script executes every 15 minutes, but Alexa accesses the feed once an hour.
+**Update October 2017 :** - In late September 2017, I made changes and additions to create a **Flash Briefing Skill** that gets read by Alexa on Amazon's Echo home smart speaker. A new script creates a summary that's culls information from other ToledoWX pages, such as current conditions at Toledo Express Airport, the seven-day forecast, the area forecast discussion, and any important statements that exist. 
 
-Here are my notes about creating the Flash Briefing, which was certified by Amazon.
+An HTML version of this briefing can be accessed from the toledoweather.info homepage. The link is <http://toledoweather.info/briefing.html>. For Alexa/Echo, I created a JSON file, found at <http://toledoweather.info/briefing.json>. Alexa can also read an RSS version. In cron (batch), my new Alexa script executes every 15 minutes, but Alexa accesses the feed once an hour.
 
-To access the Use the web or the Alexa mobile app and search the skills list for Toledo Weather. Then enable the "TOL Wx" Flash Briefing skill.
-
-
-**Update 14Jul2013 :** - Added new scripts and templates to support processing data from http://forecast.io which provides an easy API to access their JSON data. This required installing the JSON Perl module located at http://search.cpan.org/~makamaka/JSON-PP-2.27202/lib/JSON/PP.pm and also using my new ForecastIO Perl module located https://github.com/jrsawvel/Perl-ForecastIO . The ForecastIO module uses my DateTimeFormatter module located at https://github.com/jrsawvel/DateTimeFormatter .
+Here are [my notes about creating the Flash Briefing](http://sawv.org/2017/09/16/notes-about-creating-an-alexa-flash-briefing-skill-for-amazon-echo.html), which was certified by Amazon. To access the skill, a user would use the web or the Alexa mobile app and search the skills list for "Toledo Weather". Then the user would enable the **"TOL Wx"** Flash Briefing skill.
 
 
+---
 
-## Perl
+**Update August 2014 :** - Added support for [Yo](http://www.justyo.co). With the Yo app installed on my phone, I can receive notifications about special weather events from my ToledoWX app. On the server, ToledoWX uses my Yo Perl module found at <https://github.com/jrsawvel/Yo-Perl>. When certain weather conditions exist, such as heavy rainfall in the area based upon [ForecastIO's minute-by-minute forecast data](https://github.com/jrsawvel/ForecastIO-Plus-Yo/blob/master/forecastio-plus-yo.pl), then the ToledoWX server code accesses Yo's API, and then Yo sends out the "Yo" notification to the mobile Yo app for people who are  subscribed to Toledo Weather. Text can be included with the Yo notification that describes the purpose of the Yo.
+
+
+---
+
+**Update July 2013 :** - Added new scripts and templates to support processing data from <http://forecast.io> which provides an easy API to access their JSON data. This required installing the JSON Perl module located at <http://search.cpan.org/~makamaka/JSON-PP-2.27202/lib/JSON/PP.pm> and also using my new ForecastIO Perl module located <https://github.com/jrsawvel/Perl-ForecastIO>. The ForecastIO module uses my DateTimeFormatter module located at <https://github.com/jrsawvel/DateTimeFormatter>.
+
+
+---
+
+
+### Perl
 
 Perl scripts execute in cron at regular intervals. The scripts parse multiple NWS XML files and HTML pages, and the scripts download NWS images. The static HTML files are created on the local server.
 
 
 
-### Required Modules
+#### Required Modules
 
 The following pure Perl modules were downloaded and included within this app's lib directory on the server.
 
@@ -43,12 +52,14 @@ The following pure Perl modules were downloaded and included within this app's l
 
 
 
-## jQuery Mobile
+### jQuery Mobile
 
 ToledoWX Perl scripts create jQuery Mobile HTML pages that allow users to read the information easily on all devices. jQuery Mobile enables the pages to display well on older versions of IE too.
 
+With JavaScript disabled, toledoweather.info displays simple, functional HTML.
 
-## Error Log File
+
+### Error Log File
 
 A "log" directory was created under app's home directory structure. 
 
@@ -61,33 +72,39 @@ This program went into use in June 2013. Sometimes, the XML files generated by t
 May need to save a copy of the XML file that cannot be parsed to see what was changed to cause the error.
 
 
-## Image Files
+### Image Files
 
 Under the Web server's document home directory, I created an "images" directory to store downloaded NWS images to be displayed in the HTML files created by the Perl scripts.
  
 Again, because of the unresponsiveness of NWS websites at times, I felt it was better to store the images locally.
 
 
-## Directory Structures
+### Directory Structures
 
-server-home/ToledoWX/  
-lib/Weather  
-lib/HTML  
-lib/XML  
-lib/YAML  
-css/  
-bin/  
-tmpl/  
-yml/  
-log/  
+After cloning the repo and setting up the app, the following folders should exist.
+
+    server-home/ToledoWX/  
+      lib/Weather  
+      lib/HTML  
+      lib/XML  
+      lib/YAML  
+      css/  
+      bin/  
+      tmpl/  
+      yml/  
+      log/  
+      alexa/
+      nginx/
+      docs/
+      images/
+      cron/
+    
+    server-home/document-root/  
+      images/  
+      css/  
  
  
-document-home/weather/  
-images/  
-html/  
- 
- 
-## To-Do
+### To-Do
 
 Download and parse XML files pertaining to the counties surrounding Lucas County (Toledo).
 
@@ -107,7 +124,4 @@ Three National Weather Service offices provide coverage for the Toledo area.
 * Detroit/Pontiac NWS counties covered
   * Monroe
   * Lenawee
-
-
-
 
