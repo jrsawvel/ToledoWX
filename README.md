@@ -11,6 +11,16 @@ Not to be confused with Perl's Wx library interface to the wxWidgets cross-platf
 
 This could be used for other areas of the country by pointing the to the appropriate XML and HTML files.
 
+
+---
+
+**Update 04Oct2017 :** - In late September 2017, I made changes and additions to create a Flash Briefing that gets read by Alexa on Amazon's Echo home smart speaker. A new script creates a summary of info pulled from current conditions at Toledo Express Airport, the seven-day forecast, the area forecast discussion, and any important statements that exist. An HTML version of this briefing can be accessed from the toledoweather.info homepage. The link is <http://toledoweather.info/briefing.html>. For Alexa/Echo, I created a JSON file, found at <http://toledoweather.info/briefing.json>. Alexa can also read an RSS version. In cron (batch), my new Alexa script executes every 15 minutes, but Alexa accesses the feed once an hour.
+
+Here are my notes about creating the Flash Briefing, which was certified by Amazon.
+
+To access the Use the web or the Alexa mobile app and search the skills list for Toledo Weather. Then enable the "TOL Wx" Flash Briefing skill.
+
+
 **Update 14Jul2013 :** - Added new scripts and templates to support processing data from http://forecast.io which provides an easy API to access their JSON data. This required installing the JSON Perl module located at http://search.cpan.org/~makamaka/JSON-PP-2.27202/lib/JSON/PP.pm and also using my new ForecastIO Perl module located https://github.com/jrsawvel/Perl-ForecastIO . The ForecastIO module uses my DateTimeFormatter module located at https://github.com/jrsawvel/DateTimeFormatter .
 
 
