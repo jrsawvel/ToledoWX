@@ -365,6 +365,18 @@ sub wind_direction_degrees_to_cardinal {
     return $cardinal_arr[$idx];
 }
 
+sub wind_direction_degrees_to_cardinal_full_names {
+    my $degrees = shift;
+
+    my @cardinal_arr = qw(north north-northeast northeast east-northeast east east-southeast southeast south-southeast south south-southwest southwest west-southwest west west-northwest northwest north-northwest);
+
+    my $val = int(($degrees/22.5)+.5);
+
+    my $idx = $val % 16;
+
+    return $cardinal_arr[$idx];
+}
+
 # convert this 2013-06-23T11:52:00-04:00 into a better format
 sub reformat_nws_date_time {
     my $nws_date_time_str = shift;

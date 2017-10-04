@@ -1,0 +1,38 @@
+<!-- tmpl_include name="header.tmpl" -->
+
+<!-- tmpl_loop name="express_loop" -->
+Here are the conditions at Toledo Express Airport as of <!-- tmpl_var name="updatedate" -->.
+ 
+Weather was <!-- tmpl_var name="weather" -->. 
+ 
+Temperature was <!-- tmpl_var name="temperature" --> degrees. 
+ 
+Humidity was <!-- tmpl_var name="humidity" --> percent. 
+ 
+<!-- tmpl_if heatindex -->
+The heat index was <!-- tmpl_var name="heatindex" --> degrees. 
+<!-- /tmpl_if -->
+
+<!-- tmpl_if iscalmwind -->
+The wind was calm. 
+<!-- tmpl_else --> 
+The wind was from the <!-- tmpl_var name="winddirection" --> at <!-- tmpl_var name="windspeedsustained" --> <!-- tmpl_var name="windspeedsustainedunits" -->. 
+<!-- /tmpl_if -->
+  
+<!-- tmpl_if windspeedgust -->
+The winds gusted to <!-- tmpl_var name="windspeedgust" --> <!-- tmpl_var name="windspeedgustunits" -->.
+<!-- /tmpl_if -->
+ 
+<!-- tmpl_if windchillexists -->
+The wind chill was  <!-- tmpl_var name="windchill" --> degrees.
+<!-- /tmpl_if -->
+
+<!--
+Barometer : <!-- tmpl_var name="pressure" --> in <br />
+Dewpoint: <!-- tmpl_var name="dewpoint" --> F <br />
+Visibility : <!-- tmpl_var name="visibility" --> <!-- tmpl_var name="visibilityunits" --> <br />
+-->
+
+<!-- /tmpl_loop -->
+
+<!-- tmpl_include name="footer.tmpl" -->

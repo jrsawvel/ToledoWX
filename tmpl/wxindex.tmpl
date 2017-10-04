@@ -4,6 +4,9 @@
  <!--     <li data-icon="alert"><a href="severe-thunderstorm-watch.html"><span class="wx-alert">Severe T-storm Watch</span> <span class="wx-minor-text">to 9:00 pm</span></a></li> -->
  <!--       <li data-icon="alert"><a href="mesoscale-discussion.html"><span class="wx-alert">Mesoscale Discussion</span> <span class="wx-minor-text">1:30pm</span></a></li> -->
 
+<!--
+    <li data-icon="alert"><a href="http://www.toledoblade.com/TV-Radio/2017/05/05/Blizzard-Bill-retiring-after-37-years.html"><span class="wx-alert">Blizzard Bill Spencer Day</span> <span class="wx-minor-text">May 5, 2017 - A glorious weather geek</span></a></li> 
+-->
     <!-- tmpl_loop mesoscale_loop --> 
       <li data-icon="alert"><a href="<!-- tmpl_var name="wxhome" -->/mesoscale<!-- tmpl_var name="mdnum" -->.html"><span class="wx-alert">Mesoscale Discussion</span> <span class="wx-minor-text"> #<!-- tmpl_var name="mdnum" --> <!-- tmpl_var name="mdtime" --></span></a></li> 
     <!-- /tmpl_loop -->
@@ -22,6 +25,7 @@
     <!-- tmpl_unless hazardous_outlook_exists --> 
       <li><a href="<!-- tmpl_var name="wxhome" -->/hazardous-weather-outlook.html"><span>No Hazardous Weather</span> <span class="wx-minor-text"><!-- tmpl_var name="hazardous_outlook_time" --></span></a></li> 
     <!-- /tmpl_unless -->
+      <li><a href="<!-- tmpl_var name="wxhome" -->/briefing.html">Flash Briefing</a></li>
       <li><a href="<!-- tmpl_var name="wxhome" -->/external-links.html">External Links</a></li>
 <!--      <li><a href="<!-- tmpl_var name="wxhome" -->/errors.html"><span class="wx-minor-text">error log</span></a></li> -->
     </ul>

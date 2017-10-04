@@ -66,6 +66,8 @@
     wx_index_output_file:             index.html
     wx_hourly_forecast_output_file:   hourly-forecast.html
     wx_forecastio_output_file:        forecastio.html
+    alexa_flash_briefing_html:        briefing.html
+    alexa_flash_briefing_json:        briefing.json
     spcmesoscalegifhome:              http://www.spc.noaa.gov/products/md
     forecastio_api_key:               cd50a948f24600c7cc2986548ee741f1
     yo_api_token:                     734e5f22-9a08-af8e-11c0-2ab3d7c6b7ed

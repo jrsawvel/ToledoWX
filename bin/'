@@ -1,0 +1,50 @@
+#!/usr/bin/perl -wT
+
+# wx-get-hazardous.pl - hazardous outlook
+
+use strict;
+
+$|++;
+
+BEGIN {
+    unshift @INC, "/home/toledotk/Weather/lib";
+}
+
+use Weather::Web;
+use Data::Dumper;
+    
+my $url = Config::get_value_for("hazardous_outlook") . "x";
+
+my $filename = Config::get_value_for("wx_hazardous_output_file");
+
+my $ua = LWP::UserAgent->new;
+
+my $request = HTTP::Request->new( GET => $url );
+
+my $response = $ua->request($request);
+
+if ($response->is_success) {
+    my $content = $response->content;
+
+    $content = lc($content);
+
+    if ( $content =~ m/(.*)lez061(.*)this hazardous weather outlook is(.*)/s ) {
+        $content = $1 . "<br />" .  $3;
+    }
+
+    $content =~ s/^[.]/<br \/>/gm;
+    $content = Utils::newline_to_br($content);
+
+    Web::set_template_name("hazardous");
+    Web::set_template_variable("hazardous_outlook", $content);
+    my $html_output = Web::display_page("Hazardous Outlook", "returnoutput");
+
+    open FILE, ">$filename" or die "Can't create file.\n";
+    print FILE $html_output;
+    close FILE;
+} else {
+    Dumper($response->status_line);
+    die "could not retrieve $url. $response->status_line \n";
+}
+
+

@@ -22,6 +22,10 @@ my @http_header = ("Content-type: text/html;\n\n", "");
 my $http_header_var = 0;
 
 
+sub display_page_min {
+    return $kestrel_template->output;
+}
+
 sub display_page {
     my $function = shift;
     my $output_type = shift;

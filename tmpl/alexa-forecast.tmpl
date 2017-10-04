@@ -1,0 +1,10 @@
+<!-- tmpl_include name="header.tmpl" -->
+
+Here is Toledo's short-term forecast as of <!-- tmpl_var name="lastupdate" -->.
+
+<!-- tmpl_loop name="forecast_loop" -->
+ <!-- tmpl_var name="period" --> will be  <!-- tmpl_var name="forecast" -->
+<!-- /tmpl_loop -->
+
+
+<!-- tmpl_include name="footer.tmpl" -->

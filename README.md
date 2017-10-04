@@ -1,6 +1,11 @@
 # ToledoWX (Weather)
 
-Toledo, Ohio area weather information that is pulled from National Weather Serivce XML files and HTML pages.
+
+**Sep 20, 2017 update:** I used Let's Encrypt to enable SSL/TLS for toledoweather.info. I updated this page, using GitHub's web interface.
+
+---
+
+ToledoWX displays Toledo, Ohio weather information that is pulled from National Weather Serivce XML files, JSON files, plain text files, and HTML pages.
 
 Working example:  
 http://toledoweather.info
@@ -97,6 +102,7 @@ Three National Weather Service offices provide coverage for the Toledo area.
 * Detroit/Pontiac NWS counties covered
   * Monroe
   * Lenawee
+
 
 
 

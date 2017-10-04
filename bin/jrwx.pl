@@ -127,8 +127,7 @@ sub get_alerts {
         my %hash;
         $hash{'link'}  = $item->link();
         # $hash{'title'} = $item->title();
-        $hash{'title'} = "";
-        $hash{'title'} = $item->get("cap:event") if $item->get("cap:event");
+        $hash{'title'} = $item->get("cap:event");
         # $hash{'desc'}  = $item->description();
         $hash{'pubDate'}  = reformat_nws_date_time($item->pubDate());
         push(@array, \%hash); 
@@ -302,14 +301,7 @@ sub reformat_nws_date_time {
     my @values = split('T', $nws_date_time_str);
 
     # work on time first
-    my @hrminsec;
-
-    if ( $values[1] =~ /-/ ) {
-        @hrminsec = split('-', $values[1]);
-    } elsif ( $values[1] =~ /\+/ ) {
-        @hrminsec = split('\+', $values[1]);
-    }
-
+    my @hrminsec = split('-', $values[1]);
     my @time = split(':', $hrminsec[0]);
     my $hr = $time[0];
     my $min = $time[1];

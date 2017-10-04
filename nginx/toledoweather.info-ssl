@@ -1,0 +1,37 @@
+##########
+# toledoweather.info
+##########
+
+server {
+    listen   80; ## listen for ipv4; this line is default and implied
+    server_name toledoweather.info www.toledoweather.info;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name toledoweather.info www.toledoweather.info;
+
+    ssl_certificate /etc/letsencrypt/live/toledoweather.info/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/toledoweather.info/privkey.pem; 
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on; 
+    ssl_ciphers 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH';
+
+    location / {
+	root /home/toledoweather/root;
+        index index.html;
+    }
+
+    location ~ ^/(css/|images/) {
+        root /home/toledoweather/root;
+        access_log off;
+        expires -1;
+    }
+
+    location /alexa.json {
+        charset_types application/json;
+        charset UTF-8;
+        root /home/toledoweather/root;
+    }
+}

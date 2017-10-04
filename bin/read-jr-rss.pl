@@ -11,8 +11,14 @@ BEGIN {
 use XML::FeedPP;
 use Data::Dumper;
 
-my $tt_alert_link = "<a title=\"Toledo Talk Weather Page\" href=\"http://toledotalk.com/weather/html/wx.html\">>></a>";
-my $small_screen_link = "<div id=\"weatheralertssmall\"><a href=\"http://toledotalk.com/weather\">weather message >></a></div>";
+my $tt_alert_link = "<a title=\"Toledo Talk Weather Page\" href=\"http://toledoweather.info\">>></a>";
+
+
+# added these two lins on May 5, 2017, Blizzard Bill Day. He's retiring.
+# my $tt_alert_link = "<a href=\"http://www.toledoblade.com/TV-Radio/2017/05/05/Blizzard-Bill-retiring-after-37-years.html\">Blizzard Bill</a>";
+# $tt_alert_link .= " - " . "<a title=\"Toledo Talk Weather Page\" href=\"http://toledoweather.info\">>></a>";
+
+my $small_screen_link = "<div id=\"weatheralertssmall\"><a href=\"http://toledoweather.info\">weather message >></a></div>";
 
 my @msg = get_alerts();
 
