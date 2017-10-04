@@ -1,10 +1,5 @@
 # ToledoWX (Weather)
 
-
-**Sep 20, 2017 update:** I used Let's Encrypt to enable SSL/TLS for toledoweather.info. I updated this page, using GitHub's web interface.
-
----
-
 ToledoWX displays Toledo, Ohio weather information that is pulled from National Weather Serivce XML files, JSON files, plain text files, and HTML pages.
 
 Working example:  

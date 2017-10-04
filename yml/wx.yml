@@ -69,8 +69,8 @@
     alexa_flash_briefing_html:        briefing.html
     alexa_flash_briefing_json:        briefing.json
     spcmesoscalegifhome:              http://www.spc.noaa.gov/products/md
-    forecastio_api_key:               cd50a948f24600c7cc2986548ee741f1
-    yo_api_token:                     734e5f22-9a08-af8e-11c0-2ab3d7c6b7ed
+    forecastio_api_key:               api-key
+    yo_api_token:                     api-key
     forecastio_latitude:              41.665556
     forecastio_longitude:             -83.575278
     sylvania_forecastio_latitude:     41.711389
